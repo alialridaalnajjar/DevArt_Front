@@ -10,7 +10,7 @@ import {
 const categories = [
   {
     icon: Code2,
-    title: "Web Development",
+    title: "React.js",
     courses: 0,
     color: "from-orange-500 to-orange-600",
   },
@@ -29,7 +29,7 @@ const categories = [
   },
   {
     icon: Shield,
-    title: "Cybersecurity",
+    title: "TailwindCSS",
     courses: 0,
     color: "from-red-500 to-red-600",
   },

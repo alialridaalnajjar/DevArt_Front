@@ -58,7 +58,7 @@ export default function Navbar() {
       </nav>
       {/* for mobules */}
 
-      <nav className="lg:hidden sticky z-50 top-0 bg-slate-900 border-b border-slate-800  ">
+      <nav className="lg:hidden sticky z-50 top-0 bg-slate-900 border-b border-slate-800 pb-2  ">
         <div className="mx-5  ">
           <div className="w-full flex flex-row items-center justify-between pt-3 ">
             <Link to="/" className="flex items-center gap-3">
