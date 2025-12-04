@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import { RoleType, type UserRole } from "../../utils/Types";
 import { horizontalLineData } from "../data/DisplayData";
 import Horizontal from "./cards/Horizontal";
+import useAuthCookies from "../../utils/UseAuth";
+
 export default function Register() {
+  const { saveToken, getToken } = useAuthCookies();
   const [user, setUser] = useState<UserRole>({
     username: "",
     email: "",
@@ -16,24 +19,29 @@ export default function Register() {
     first_name: "",
     last_name: "",
   });
+
   const handleRegister = async () => {
-    fetch("http://localhost:3000/api/auth/register", {
+    const res = await fetch("http://localhost:3000/api/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
-    }).then((res) => {
-      if (res.ok) {
-        alert("Registration successful!");
-      } else {
-        alert("Registration failed.");
-      }
     });
+
+    if (res.ok) {
+      const data = await res.json();
+      alert("Registration successful!");
+      saveToken(data.token);
+      const meow = getToken();
+      console.log("Token after operations is:", meow);
+    } else {
+      alert("Registration failed.");
+    }
   };
+
   return (
     <>
-    
       <div className="lg:hidden min-h-screen bg-linear-to-br from-slate-900 via-gray-900 to-zinc-900 text-white p-5">
         <div className="flex flex-col items-center justify-center max-w-md mx-auto">
           <div className="text-center mb-8">

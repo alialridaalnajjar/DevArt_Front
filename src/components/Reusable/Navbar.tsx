@@ -3,10 +3,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import NavExpansion from "./NavExpansion";
 import { Menu } from "lucide-react";
+import useAuthCookies from "../../utils/UseAuth";
+import SignOut from "../Auth/cards/SignOut";
 export default function Navbar() {
   const [showNav, setShowNav] = useState<boolean>(false);
+  const { isAuthenticated } = useAuthCookies();
   return (
     <>
+      {isAuthenticated && <SignOut />}
       {/*Pc Screens */}
       <nav className=" bg-slate-900  sticky top-0 z-50 hidden lg:block">
         <div className=" mx-5 px-4 sm:px-6 lg:px-8">

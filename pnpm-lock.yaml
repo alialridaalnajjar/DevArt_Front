@@ -14,6 +14,9 @@ importers:
       react:
         specifier: ^19.2.0
         version: 19.2.0
+      react-cookie:
+        specifier: ^8.0.1
+        version: 8.0.1(@types/react@19.2.5)(react@19.2.0)
       react-dom:
         specifier: ^19.2.0
         version: 19.2.0(react@19.2.0)
@@ -609,6 +612,11 @@ packages:
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
 
+  '@types/hoist-non-react-statics@3.3.7':
+    resolution: {integrity: sha512-PQTyIulDkIDro8P+IHbKCsw7U2xxBYflVzW/FgWdCAePD9xGSidgA76/GeJ6lBKoblyhf9pBY763gbrN+1dI8g==}
+    peerDependencies:
+      '@types/react': '*'
+
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
@@ -753,6 +761,10 @@ packages:
 
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
+
+  cookie@1.1.1:
+    resolution: {integrity: sha512-ei8Aos7ja0weRpFzJnEA9UHJ/7XQmqglbRwnf2ATjcB9Wq874VKH9kfjjirM6UhU2/E5fFYadylyhFldcqSidQ==}
+    engines: {node: '>=18'}
 
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
@@ -934,6 +946,9 @@ packages:
 
   hermes-parser@0.25.1:
     resolution: {integrity: sha512-6pEjquH3rqaI6cYAXYPcz9MS4rY6R4ngRgrgfDshRptUZIc3lw0MCIJIGDj9++mfySOuPTHB4nrSW99BCvOPIA==}
+
+  hoist-non-react-statics@3.3.2:
+    resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
 
   ignore@5.3.2:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
@@ -1170,10 +1185,18 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
+  react-cookie@8.0.1:
+    resolution: {integrity: sha512-QNdAd0MLuAiDiLcDU/2s/eyKmmfMHtjPUKJ2dZ/5CcQ9QKUium4B3o61/haq6PQl/YWFqC5PO8GvxeHKhy3GFA==}
+    peerDependencies:
+      react: '>= 16.3.0'
+
   react-dom@19.2.0:
     resolution: {integrity: sha512-UlbRu4cAiGaIewkPyiRGJk0imDN2T3JjieT6spoL2UeSf5od4n5LB/mQ4ejmxhCFT1tYe8IvaFulzynWovsEFQ==}
     peerDependencies:
       react: ^19.2.0
+
+  react-is@16.13.1:
+    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
   react-refresh@0.18.0:
     resolution: {integrity: sha512-QgT5//D3jfjJb6Gsjxv0Slpj23ip+HtOpnNgnb2S5zU3CB26G/IDPGoy4RJB42wzFE46DRsstbW6tKHoKbhAxw==}
@@ -1283,6 +1306,9 @@ packages:
 
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
+
+  universal-cookie@8.0.1:
+    resolution: {integrity: sha512-B6ks9FLLnP1UbPPcveOidfvB9pHjP+wekP2uRYB9YDfKVpvcjKgy1W5Zj+cEXJ9KTPnqOKGfVDQBmn8/YCQfRg==}
 
   update-browserslist-db@1.1.4:
     resolution: {integrity: sha512-q0SPT4xyU84saUX+tomz1WLkxUbuaJnR1xWt17M7fJtEJigJeWUNGUqrauFXsHnqev9y9JTRGwk13tFBuKby4A==}
@@ -1799,6 +1825,11 @@ snapshots:
 
   '@types/estree@1.0.8': {}
 
+  '@types/hoist-non-react-statics@3.3.7(@types/react@19.2.5)':
+    dependencies:
+      '@types/react': 19.2.5
+      hoist-non-react-statics: 3.3.2
+
   '@types/json-schema@7.0.15': {}
 
   '@types/node@24.10.1':
@@ -1980,6 +2011,8 @@ snapshots:
   concat-map@0.0.1: {}
 
   convert-source-map@2.0.0: {}
+
+  cookie@1.1.1: {}
 
   cross-spawn@7.0.6:
     dependencies:
@@ -2191,6 +2224,10 @@ snapshots:
     dependencies:
       hermes-estree: 0.25.1
 
+  hoist-non-react-statics@3.3.2:
+    dependencies:
+      react-is: 16.13.1
+
   ignore@5.3.2: {}
 
   ignore@7.0.5: {}
@@ -2372,10 +2409,21 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
+  react-cookie@8.0.1(@types/react@19.2.5)(react@19.2.0):
+    dependencies:
+      '@types/hoist-non-react-statics': 3.3.7(@types/react@19.2.5)
+      hoist-non-react-statics: 3.3.2
+      react: 19.2.0
+      universal-cookie: 8.0.1
+    transitivePeerDependencies:
+      - '@types/react'
+
   react-dom@19.2.0(react@19.2.0):
     dependencies:
       react: 19.2.0
       scheduler: 0.27.0
+
+  react-is@16.13.1: {}
 
   react-refresh@0.18.0: {}
 
@@ -2484,6 +2532,10 @@ snapshots:
   typescript@5.9.3: {}
 
   undici-types@7.16.0: {}
+
+  universal-cookie@8.0.1:
+    dependencies:
+      cookie: 1.1.1
 
   update-browserslist-db@1.1.4(browserslist@4.28.0):
     dependencies:
