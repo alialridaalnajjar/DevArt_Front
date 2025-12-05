@@ -6,6 +6,7 @@ import LandingPage from "./pages/LandingPage";
 import RedirectRoute from "./utils/RedirectRoute";
 import SearchPage from "./pages/SearchPage";
 import CoursesPage from "./pages/CoursesPage";
+import ProfilePage from "./pages/ProfilePage";
 function App() {
   return (
     <Router>
@@ -17,6 +18,7 @@ function App() {
         <Route element={<RedirectRoute />}>
           <Route path="/Search" element={<SearchPage />} />
           <Route path="/Courses" element={<CoursesPage />} />
+          <Route path="/Profile/:userId" element={<ProfilePage />} />
         </Route>
       </Routes>
     </Router>

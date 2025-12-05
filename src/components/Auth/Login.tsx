@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
-import  useAuthCookies  from "../../utils/UseAuth";
+import { Link, useNavigate } from "react-router-dom";
+import useAuthCookies from "../../utils/UseAuth";
 import { horizontalLineData } from "../data/DisplayData";
 import Horizontal from "./cards/Horizontal";
 import { useState } from "react";
 export default function Login() {
   const { saveToken } = useAuthCookies();
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState<{
     email: string;
     password: string;
@@ -53,6 +54,7 @@ export default function Login() {
       const json = await response.json();
       console.log(json);
       saveToken(json.token);
+      navigate("/");
     } catch (error) {
       setError("Login failed. Please try again.");
       console.error("Error during login:", error);

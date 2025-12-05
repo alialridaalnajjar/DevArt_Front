@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RoleType, type UserRole } from "../../utils/Types";
 import { horizontalLineData } from "../data/DisplayData";
 import Horizontal from "./cards/Horizontal";
 import useAuthCookies from "../../utils/UseAuth";
 
 export default function Register() {
-  const { saveToken, getToken } = useAuthCookies();
+  const navigate = useNavigate();
+  const { saveToken } = useAuthCookies();
   const [user, setUser] = useState<UserRole>({
     username: "",
     email: "",
@@ -33,8 +34,9 @@ export default function Register() {
       const data = await res.json();
       alert("Registration successful!");
       saveToken(data.token);
-      const meow = getToken();
-      console.log("Token after operations is:", meow);
+
+      console.log("Token after operations is:", data.token);
+      navigate("/");
     } else {
       alert("Registration failed.");
     }
