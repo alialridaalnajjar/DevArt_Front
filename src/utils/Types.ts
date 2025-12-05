@@ -15,7 +15,6 @@ export type UserRole = {
   last_name: string;
 };
 
-
 export type ProfileData = {
   username: string;
   email: string;
@@ -28,14 +27,19 @@ export type ProfileData = {
   first_name: string;
   last_name: string;
   bio?: string | null;
-
 };
 
 export interface DecodedToken {
-  userId: number;   
+  userId: number;
   username: string;
   email: string;
   role: string;
   exp: number;
   iat: number;
 }
+
+export type Activity = {
+  title: string;
+  user_id: number;
+  dod:Date
+};

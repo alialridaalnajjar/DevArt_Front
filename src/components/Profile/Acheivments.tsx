@@ -1,6 +1,32 @@
 import { Trophy, Target, Zap, Star, Award, Flame } from "lucide-react";
+import type { Activity } from "../../utils/Types";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 export default function ProfileAchievements() {
+  const { userId } = useParams();
+  const [activites, setActivities] = useState<Activity[]>([]);
+
+  const fetchActivites = async (userId: number) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/activity/${userId}`
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setActivities(data.activities);
+      console.log("Fetched activities data:", data);
+    } catch (error) {
+      console.log("Error fetching activities data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchActivites(Number(userId));
+  }, []);
+
   const achievements = [
     {
       icon: Trophy,
@@ -103,27 +129,23 @@ export default function ProfileAchievements() {
       <div className="bg-[#243447] rounded-2xl border border-white/10 p-6">
         <h2 className="text-xl font-bold text-white mb-4">Recent Activity</h2>
         <div className="space-y-3 text-sm">
-          <div className="flex items-start gap-3">
-            <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5" />
-            <div>
-              <p className="text-gray-300">Completed TypeScript Mastery</p>
-              <p className="text-gray-500 text-xs">2 days ago</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <div className="w-2 h-2 bg-orange-500 rounded-full mt-1.5" />
-            <div>
-              <p className="text-gray-300">Started Advanced React Patterns</p>
-              <p className="text-gray-500 text-xs">1 week ago</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <div className="w-2 h-2 bg-blue-500 rounded-full mt-1.5" />
-            <div>
-              <p className="text-gray-300">Earned Top Performer badge</p>
-              <p className="text-gray-500 text-xs">2 weeks ago</p>
-            </div>
-          </div>
+          {activites.map((act, index) => {
+            return (
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5" />
+                <div key={index}>
+                  <p className="text-gray-300">Completed {act.title}</p>
+                  <p className="text-gray-500 text-xs">
+                    {Math.floor(
+                      (Date.now() - new Date(act.dod).getTime()) /
+                        (1000 * 60 * 60 * 24)
+                    )}{" "}
+                    days ago
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

@@ -176,8 +176,8 @@ export default function ProfileHeader({
               </label>
             )}
 
-            <div className="absolute top-0 -right-2 bg-green-500 border-2 border-slate-800 px-3 py-1 rounded-full text-xs font-semibold text-white shadow-lg">
-              Active
+            <div className="absolute top-2 right-2 bg-green-500 border-2 border-slate-800 px-1 py-1 rounded-full text-xs font-semibold text-white shadow-lg">
+              
             </div>
           </div>
 
