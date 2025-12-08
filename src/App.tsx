@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
-import CoursesPage from "./pages/CoursesPage";
+import CoursesPage from "./pages/PlayPage";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
@@ -14,13 +14,20 @@ function App() {
       <Routes>
         <Route path="/Register" element={<RegisterPage />} />
         <Route path="/Login" element={<LoginPage />} />
-        <Route path="/" element={<LandingPage />} />
         <Route element={<RedirectRoute />}>
-          <Route path="/Courses/:courseName" element={<BrowseCoursePage />} />
+          <Route
+            path="/Courses/:courseName/:videoId"
+            element={<CoursesPage />}
+          />
+          <Route
+            path="/Courses/:courseName"
+            element={<BrowseCoursePage />}
+          />
           <Route path="/Search" element={<SearchPage />} />
           <Route path="/Courses" element={<CoursesPage />} />
           <Route path="/Profile/:userId" element={<ProfilePage />} />
         </Route>
+        <Route path="/" element={<LandingPage />} />
       </Routes>
     </Router>
   );

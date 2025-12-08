@@ -9,7 +9,7 @@ export default function LandingPage() {
   return (
     <>
       <Navbar />
-      <Courses />
+      <Courses   />
       <Faq />
       <WhyChooseUs />
       {isAuthenticated || <CTASection />}

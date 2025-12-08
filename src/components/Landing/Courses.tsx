@@ -6,6 +6,7 @@ import {
   Shield,
   Palette,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const categories = [
   {
@@ -13,12 +14,14 @@ const categories = [
     title: "React.js",
     courses: 0,
     color: "from-orange-500 to-orange-600",
+    path: "React",
   },
   {
     icon: Database,
     title: "Backend & APIs",
     courses: 0,
     color: "from-blue-500 to-blue-600",
+    path: "Backend",
   },
 
   {
@@ -26,24 +29,28 @@ const categories = [
     title: "Software Engineering",
     courses: 0,
     color: "from-purple-500 to-purple-600",
+    path: "SoftwareEngineering",
   },
   {
     icon: Shield,
     title: "TailwindCSS",
     courses: 0,
     color: "from-red-500 to-red-600",
+    path: "TailwindCSS",
   },
   {
     icon: Palette,
     title: "Front End",
     courses: 0,
     color: "from-pink-500 to-pink-600",
+    path: "FrontEnd",
   },
   {
     icon: Smartphone,
     title: "Java",
     courses: 0,
     color: "from-green-500 to-green-600",
+    path: "Java",
   },
 ];
 
@@ -67,7 +74,8 @@ export default function Courses() {
           {categories.map((category) => {
             const Icon = category.icon;
             return (
-              <div
+              <Link
+                to={`/courses/${category.path}`}
                 key={category.title}
                 className="group cursor-pointer rounded-2xl border border-slate-700 bg-[#1a2332] p-8 transition-all hover:scale-105 hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-500/10"
               >
@@ -98,7 +106,7 @@ export default function Courses() {
                     />
                   </svg>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

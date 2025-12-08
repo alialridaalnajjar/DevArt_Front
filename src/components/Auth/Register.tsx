@@ -141,8 +141,14 @@ export default function Register() {
                 <option value={RoleType.USER} className="bg-slate-900">
                   Student
                 </option>
-                <option value={RoleType.ADMIN} className="bg-slate-900">
-                  Instructor
+                <option value={RoleType.USER} className="bg-slate-900">
+                  Developer
+                </option>
+                 <option value={RoleType.USER} className="bg-slate-900">
+                  FreeLancer
+                </option>
+                 <option value={RoleType.USER} className="bg-slate-900">
+                  Prefer Not To Say
                 </option>
               </select>
             </div>
