@@ -54,6 +54,7 @@ export type Video = {
   duration_seconds: number;
   description: string;
   genre: string;
+  author?: string;
 };
 
 export type Documentation = {

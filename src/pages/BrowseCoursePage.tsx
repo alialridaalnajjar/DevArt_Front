@@ -6,8 +6,8 @@ import type { Video } from "../utils/Types";
 
 const genres = [
   "All",
-  "React",
-  "BackendDevelopment",
+  "DevArt",
+  "FreeCodeCamp",
   "SoftwareEngineering",
   "TailwindCSS",
   "FrontEnd",
@@ -56,7 +56,7 @@ export default function BrowseCoursePage() {
 
   const filteredVideos = videos.filter((video) => {
     const matchesGenre =
-      selectedGenre === "All" || video.genre === selectedGenre;
+      selectedGenre === "All" || video?.author === selectedGenre;
     const matchesSearch =
       video.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       video.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -175,7 +175,7 @@ export default function BrowseCoursePage() {
 
                     <div className="flex items-center justify-between pt-3 border-t border-[#2a3441]">
                       <span className="text-xs text-gray-500">
-                        Video ID: {video.video_id}
+                        Video Author: {video.author || "Not Specified"}
                       </span>
                       <button className="text-xs font-medium text-orange-500 hover:text-orange-400 transition-colors">
                         Watch Now →
