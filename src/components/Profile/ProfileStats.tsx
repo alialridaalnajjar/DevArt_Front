@@ -1,4 +1,4 @@
-import { TrendingUp, BookOpen, Award, Clock } from "lucide-react"
+import { TrendingUp, BookOpen, Award, Clock } from "lucide-react";
 
 export default function ProfileStats() {
   const stats = [
@@ -30,14 +30,14 @@ export default function ProfileStats() {
       change: "+12h this week",
       color: "text-purple-400",
     },
-  ]
+  ];
 
   return (
     <div className="bg-[#243447] rounded-2xl border border-white/10 p-6">
       <h2 className="text-xl font-bold text-white mb-6">Learning Statistics</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat) => {
-          const Icon = stat.icon
+          const Icon = stat.icon;
           return (
             <div
               key={stat.label}
@@ -50,9 +50,9 @@ export default function ProfileStats() {
               <p className="text-xs text-gray-400 mb-1">{stat.label}</p>
               <p className="text-xs text-orange-400">{stat.change}</p>
             </div>
-          )
+          );
         })}
       </div>
     </div>
-  )
+  );
 }

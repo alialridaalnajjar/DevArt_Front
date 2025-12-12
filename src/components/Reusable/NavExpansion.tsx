@@ -8,7 +8,7 @@ export default function NavExpansion() {
   const token = getDecodedToken();
   const navData: { icon: React.ElementType; title: string; link: string }[] = [
     { icon: Home, title: "Home", link: "/" },
-    { icon: Book, title: "Courses", link: "/Courses" },
+    { icon: Book, title: "Courses", link: "/Courses/All" },
     { icon: Search, title: "Search", link: "/Search" },
   ];
 const handleLogout = () => {

@@ -20,12 +20,12 @@ export default function Faq() {
     {
       question: "How long do I have access to the courses?",
       answer:
-        "Once you enroll in a course, you have lifetime access to all course materials, including future updates and additions. Learn at your own pace without any time pressure.",
+        "You have lifetime access to all course materials, including future updates and additions. Learn at your own pace without any time pressure.",
     },
     {
       question: "Do I get a certificate upon completion?",
       answer:
-        "Yes! Upon successfully completing a course, you will receive a certificate of completion that you can add to your portfolio, resume, or LinkedIn profile to showcase your new skills.",
+        "Right now, we do not offer certificates for course completion. Our focus is on providing high-quality education and practical skills that you can apply in real-world scenarios.",
     },
     {
       question: "Are the courses suitable for beginners?",
@@ -35,7 +35,7 @@ export default function Faq() {
     {
       question: "What kind of support is available?",
       answer:
-        "You get access to our active community forum where you can ask questions, share knowledge, and connect with other learners. Premium courses also include direct instructor support and code reviews.",
+        "Our support team is available to assist you with any technical issues or questions you may have.",
     },
     {
       question: "Can I access courses on mobile devices?",

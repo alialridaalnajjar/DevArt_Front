@@ -45,7 +45,7 @@ export default function Navbar() {
                 Home
               </Link>
               <Link
-                to="/Courses"
+                to="/Courses/All"
                 className="text-sm hover:cursor-pointer font-medium text-white transition-colors hover:text-orange-500"
               >
                 Courses

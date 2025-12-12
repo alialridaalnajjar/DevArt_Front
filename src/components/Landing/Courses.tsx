@@ -12,7 +12,7 @@ const categories = [
   {
     icon: Code2,
     title: "React.js",
-    courses: 0,
+    courses: 4,
     color: "from-orange-500 to-orange-600",
     path: "React",
   },
@@ -47,10 +47,10 @@ const categories = [
   },
   {
     icon: Smartphone,
-    title: "Java",
+    title: "All",
     courses: 0,
     color: "from-green-500 to-green-600",
-    path: "Java",
+    path: "All",
   },
 ];
 
@@ -88,7 +88,7 @@ export default function Courses() {
                   {category.title}
                 </h3>
                 <p className="mt-2 text-slate-400">
-                  {category.courses} courses available
+                  {category.courses} videos available
                 </p>
                 <div className="mt-4 flex items-center text-sm font-medium text-orange-500 transition-transform group-hover:translate-x-1">
                   Explore courses

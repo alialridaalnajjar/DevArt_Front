@@ -6,6 +6,7 @@ import Navbar from "../components/Reusable/Navbar";
 import useAuthCookies from "../utils/UseAuth";
 export default function LandingPage() {
   const { isAuthenticated } = useAuthCookies();
+  
   return (
     <>
       <Navbar />

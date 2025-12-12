@@ -11,17 +11,13 @@ const genres = [
   "SoftwareEngineering",
   "TailwindCSS",
   "FrontEnd",
-  "Java",
 ];
 
 export default function BrowseCoursePage() {
-
-
   const [selectedGenre, setSelectedGenre] = useState("All");
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
   const { courseName } = useParams();
-
   useEffect(() => {
     const fetchVideos = async () => {
       try {
@@ -70,7 +66,7 @@ export default function BrowseCoursePage() {
         <div className="container mx-auto px-4 py-8 lg:px-8 lg:py-12">
           <div className="mb-8">
             <h1 className="text-4xl font-bold text-white mb-3">
-              Browse Courses
+              Browse {courseName} Videos
             </h1>
             <p className="text-gray-400">
               Explore our collection of expert-led video tutorials
@@ -141,7 +137,7 @@ export default function BrowseCoursePage() {
                   }`}
                 >
                   {/* Video Thumbnail */}
-                  <div className="relative aspect-video bg-gradient-to-br from-orange-500/20 to-amber-500/20 flex items-center justify-center overflow-hidden">
+                  <div className="relative aspect-video bg-linear-to-br from-orange-500/20 to-amber-500/20 flex items-center justify-center overflow-hidden">
                     {/* ✅ FIXED: bg-gradient-to-br */}
                     <div className="absolute inset-0 bg-[#0f1419]/60 group-hover:bg-[#0f1419]/40 transition-colors" />
                     <Play className="h-16 w-16 text-orange-500 relative z-10 group-hover:scale-110 transition-transform" />
@@ -162,6 +158,9 @@ export default function BrowseCoursePage() {
                     <div className="mb-2">
                       <span className="inline-block px-2 py-1 bg-orange-500/10 border border-orange-500/30 rounded text-xs font-medium text-orange-400">
                         {video.genre}
+                      </span>{" "}
+                      <span className="inline-block px-2 py-1 bg-orange-500/10 border border-orange-500/30 rounded text-xs font-medium text-orange-400">
+                        {video.language}
                       </span>
                     </div>
 
