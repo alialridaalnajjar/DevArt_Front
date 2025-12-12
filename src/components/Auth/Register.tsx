@@ -339,12 +339,18 @@ export default function Register() {
                     value={user.role}
                     className="w-full bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-amber-600 focus:bg-slate-800/70 transition"
                   >
-                    <option value={RoleType.USER} className="bg-slate-900">
-                      Student
-                    </option>
-                    <option value={RoleType.ADMIN} className="bg-slate-900">
-                      Instructor
-                    </option>
+                      <option value={RoleType.USER} className="bg-slate-900">
+                  Student
+                </option>
+                <option value={RoleType.USER} className="bg-slate-900">
+                  Developer
+                </option>
+                 <option value={RoleType.USER} className="bg-slate-900">
+                  FreeLancer
+                </option>
+                 <option value={RoleType.USER} className="bg-slate-900">
+                  Prefer Not To Say
+                </option>
                   </select>
                 </div>
 

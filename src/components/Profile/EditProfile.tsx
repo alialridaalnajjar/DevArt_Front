@@ -97,7 +97,7 @@ export default function EditProfile({
           <div className="flex flex-col items-start justify-start">
             <h2 className="text-2xl font-bold text-white">Edit Profile</h2>
             <h5 className="text-red-600/60 text-sm">
-              Please note that till now you can't edit the private data
+              Please note that till now you can't edit critical data!
             </h5>
           </div>
           <button

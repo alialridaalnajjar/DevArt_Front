@@ -68,9 +68,9 @@ export default function ProfilePage() {
               <div className="space-y-8">
                 <ProfileAchievements />
               </div>
+              <SignOut />
             </div>
           </main>
-          <SignOut />
         </div>
       )}
     </>

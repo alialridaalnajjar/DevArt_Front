@@ -24,7 +24,7 @@ export default function SignOut() {
         rounded-lg 
         shadow-md 
         transition duration-150 ease-in-out
-        w-full sm:w-auto text-center
+        w-auto sm:w-auto text-center
       "
       onClick={handleSignOut}
     >
