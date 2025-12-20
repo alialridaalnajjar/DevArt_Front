@@ -1,22 +1,24 @@
 import { Clock, Filter, Play, Search } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "../components/Reusable/Navbar";
 import type { Video } from "../utils/Types";
-
+import { ArrowDownWideNarrow } from "lucide-react";
+import { ArrowUpWideNarrow } from "lucide-react";
 const genres = [
   "All",
-  "DevArt",
-  "FreeCodeCamp",
-  "SoftwareEngineering",
+  "React.js",
+  "JavaScript",
+  "TypeScript",
   "TailwindCSS",
   "FrontEnd",
 ];
 
 export default function BrowseCoursePage() {
-  const [selectedGenre, setSelectedGenre] = useState("All");
+  const [selectedModule, setSelectedModule] = useState("All");
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isSorting, setIsSorting] = useState<number>(0);
   const { courseName } = useParams();
   useEffect(() => {
     const fetchVideos = async () => {
@@ -27,7 +29,28 @@ export default function BrowseCoursePage() {
         );
         const data = await response.json();
         console.log("Fetched videos:", data);
-        setVideos(data);
+
+        const videoThumbnail = data.map((video: Video) => {
+          const videoHex = video.video_url.split("embed/")[1];
+          return {
+            id: video.video_id,
+            thumbnail: videoHex,
+          };
+        });
+
+        // Merge thumbnails with videoss
+        const updatedVideos = data.map((video: Video) => {
+          const thumbnailObj = videoThumbnail.find(
+            (thumb: { id: number; thumbnail: string }) =>
+              thumb.id === video.video_id
+          );
+          return {
+            ...video,
+            ...thumbnailObj,
+          };
+        });
+
+        setVideos(updatedVideos);
       } catch (error) {
         console.error("Error fetching videos:", error);
         setVideos([]);
@@ -51,13 +74,32 @@ export default function BrowseCoursePage() {
   };
 
   const filteredVideos = videos.filter((video) => {
-    const matchesGenre =
-      selectedGenre === "All" || video?.author === selectedGenre;
+    const matchesModule =
+      selectedModule === "All" ||
+      video?.module.toLowerCase() === selectedModule.toLowerCase();
     const matchesSearch =
       video.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       video.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesGenre && matchesSearch;
+    return matchesModule && matchesSearch;
   });
+
+  const displayVideos = useMemo(() => {
+    if (isSorting === 1) {
+      return [...filteredVideos].sort(
+        (a, b) => b.duration_seconds - a.duration_seconds
+      );
+    }
+    if (isSorting === 2) {
+      return [...filteredVideos].sort(
+        (a, b) => a.duration_seconds - b.duration_seconds
+      );
+    }
+    return filteredVideos;
+  }, [filteredVideos, isSorting]);
+
+  const handleSortByDuration = () => {
+    setIsSorting((prev) => (prev + 1) % 3);
+  };
 
   return (
     <>
@@ -89,18 +131,33 @@ export default function BrowseCoursePage() {
 
             {/* Filtering logic */}
             <div className="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0">
-              <Filter className="h-5 w-5 text-gray-400 shrink-0" />
-              {genres.map((genre) => (
+              {isSorting === 0 ? (
+                <Filter
+                  className="h-5 w-5 mr-1 text-gray-400 shrink-0 hover:cursor-pointer"
+                  onClick={handleSortByDuration}
+                />
+              ) : isSorting === 1 ? (
+                <ArrowDownWideNarrow
+                  className="h-5 w-5 mr-1 text-gray-400 shrink-0 hover:cursor-pointer"
+                  onClick={handleSortByDuration}
+                />
+              ) : (
+                <ArrowUpWideNarrow
+                  className="h-5 w-5 mr-1 text-gray-400 shrink-0 hover:cursor-pointer"
+                  onClick={handleSortByDuration}
+                />
+              )}
+              {genres.map((mod) => (
                 <button
-                  key={genre}
-                  onClick={() => setSelectedGenre(genre)}
+                  key={mod}
+                  onClick={() => setSelectedModule(mod)}
                   className={`px-4 py-2 rounded-lg whitespace-nowrap font-medium transition-all ${
-                    selectedGenre === genre
+                    selectedModule === mod
                       ? "bg-linear-to-r from-orange-500 to-amber-500 text-white"
                       : "bg-[#1a2332] text-gray-400 hover:text-white hover:bg-[#212d3d]"
                   }`}
                 >
-                  {genre}
+                  {mod}
                 </button>
               ))}
             </div>
@@ -125,7 +182,7 @@ export default function BrowseCoursePage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredVideos.map((video) => (
+              {displayVideos.map((video) => (
                 <Link
                   to={`/Courses/${courseName}/${video.video_id}`}
                   key={video.video_id}
@@ -138,8 +195,10 @@ export default function BrowseCoursePage() {
                 >
                   {/* Video Thumbnail */}
                   <div className="relative aspect-video bg-linear-to-br from-orange-500/20 to-amber-500/20 flex items-center justify-center overflow-hidden">
-                    {/* ✅ FIXED: bg-gradient-to-br */}
-                    <div className="absolute inset-0 bg-[#0f1419]/60 group-hover:bg-[#0f1419]/40 transition-colors" />
+                    <img
+                      src={`https://img.youtube.com/vi/${video.thumbnail}/maxresdefault.jpg`}
+                      alt={video.title}
+                    />
                     <Play className="h-16 w-16 text-orange-500 relative z-10 group-hover:scale-110 transition-transform" />
 
                     <div className="absolute bottom-2 right-2 bg-black/80 px-2 py-1 rounded flex items-center gap-1">
@@ -149,8 +208,8 @@ export default function BrowseCoursePage() {
                       </span>
                     </div>
 
-                    <div className="absolute top-2 left-2 bg-orange-500/90 px-2 py-1 rounded text-xs font-bold text-white">
-                      Module {video.module_id}
+                    <div className="absolute top-2 left-2 bg-orange-500/70 px-2 py-1 rounded text-xs font-bold text-white">
+                      Module {video.module}
                     </div>
                   </div>
 

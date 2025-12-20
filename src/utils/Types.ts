@@ -46,8 +46,9 @@ export type Activity = {
 };
 
 export type Video = {
+  thumbnail: string ;
   video_id: number;
-  module_id: number;
+  module: string;
   title: string;
   video_url: string;
   manifest_url?: string | null;

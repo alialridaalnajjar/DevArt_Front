@@ -11,10 +11,10 @@ import { Link } from "react-router-dom";
 const categories = [
   {
     icon: Code2,
-    title: "React.js",
+    title: "Front End",
     courses: 4,
-    color: "from-orange-500 to-orange-600",
-    path: "React",
+    color: "from-pink-500 to-pink-600",
+    path: "FrontEnd",
   },
   {
     icon: Database,
@@ -38,12 +38,13 @@ const categories = [
     color: "from-red-500 to-red-600",
     path: "TailwindCSS",
   },
+
   {
     icon: Palette,
-    title: "Front End",
+    title: "React.js",
     courses: 0,
-    color: "from-pink-500 to-pink-600",
-    path: "FrontEnd",
+    color: "from-orange-500 to-orange-600",
+    path: "React",
   },
   {
     icon: Smartphone,
