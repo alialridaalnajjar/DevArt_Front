@@ -26,7 +26,7 @@ export default function ProfilePage() {
         `http://localhost:3000/api/profile/${userId}`
       );
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("Network response was no@t ok");
       }
       const data = await response.json();
       setProfileData({ ...data.user });

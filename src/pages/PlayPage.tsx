@@ -3,7 +3,7 @@
 import { ChevronDown, ChevronUp, Clock, FileText, Tag } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import MiniAct from "../components/Profile/reusable/MiniAct";
+import MiniAct from "../components/Profile/Reusable/MiniAct";
 import Navbar from "../components/Reusable/Navbar";
 import { type Documentation, type Video } from "../utils/Types";
 // Mock video data
@@ -136,7 +136,7 @@ export default function WatchPage() {
                   <span className="text-sm text-gray-400">
                     Module{" "}
                     <span className="text-white font-semibold">
-                      {videoData.module_id}
+                      {videoData.module}
                     </span>
                   </span>
                 </div>

@@ -58,7 +58,7 @@ export default function ProfileHeader({
     try {
       setUploading(true);
 
-      // Use consistent filename so it replaces the old one
+      // Use consistent filename so it replaces the old one!!
       const fileName = `profile_photos/${username}_profile_photo`;
       const storageRef = ref(storage, fileName);
 

@@ -67,7 +67,7 @@ export default function Navbar() {
                 </Link>
               ) : (
                 <Link
-                  to="/Register"
+                  to="/Login"
                   className=" rounded-lg bg-linear-to-r from-orange-500 to-orange-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:shadow-orange-500/40 hover:brightness-110 hover:cursor-pointer"
                 >
                   Login/Register

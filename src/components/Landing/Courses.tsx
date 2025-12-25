@@ -26,7 +26,7 @@ const categories = [
 
   {
     icon: Cloud,
-    title: "Software Engineering",
+    title: "Database Management",
     courses: 0,
     color: "from-purple-500 to-purple-600",
     path: "SoftwareEngineering",
@@ -41,7 +41,7 @@ const categories = [
 
   {
     icon: Palette,
-    title: "React.js",
+    title: "Java",
     courses: 0,
     color: "from-orange-500 to-orange-600",
     path: "React",

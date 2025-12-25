@@ -4,36 +4,16 @@ import { Play } from "lucide-react"
 
 export default function ProfileCourses() {
   const enrolledCourses = [
-    {
-      id: 1,
-      title: "Advanced React Patterns",
-      instructor: "Sarah Johnson",
-      progress: 75,
-      totalHours: 12,
-      completedHours: 9,
-      status: "In Progress",
-      thumbnail: "/react-programming-course.png",
-    },
-    {
-      id: 2,
-      title: "Full-Stack Next.js Development",
-      instructor: "Mike Chen",
-      progress: 45,
-      totalHours: 20,
-      completedHours: 9,
-      status: "In Progress",
-      thumbnail: "/nextjs-development-course.jpg",
-    },
-    {
-      id: 3,
-      title: "TypeScript Mastery",
-      instructor: "Emily Parker",
-      progress: 100,
-      totalHours: 8,
-      completedHours: 8,
-      status: "Completed",
-      thumbnail: "/typescript-programming-course.png",
-    },
+     {
+      id: null,
+      title: null,
+      instructor: null,
+      progress: null,
+      totalHours: null,
+      completedHours: null,
+      status: null,
+      thumbnail:null,
+    }
   ]
 
   return (
@@ -58,7 +38,7 @@ export default function ProfileCourses() {
               <div className="shrink-0">
                 <img
                   src={course.thumbnail || "/placeholder.svg"}
-                  alt={course.title}
+                 
                   className="w-full sm:w-32 h-24 object-cover rounded-lg"
                 />
               </div>

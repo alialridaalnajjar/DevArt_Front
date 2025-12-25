@@ -5,6 +5,7 @@ import Navbar from "../components/Reusable/Navbar";
 import type { Video } from "../utils/Types";
 import { ArrowDownWideNarrow } from "lucide-react";
 import { ArrowUpWideNarrow } from "lucide-react";
+import BackgroundSpots from "./Reusable/BackgroundSpots";
 const genres = [
   "All",
   "React.js",
@@ -104,7 +105,9 @@ export default function BrowseCoursePage() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-[#0f1419]">
+      <div className="min-h-screen bg-linear-to-tr bg-slate-900 py-8">
+        {/* Background Spots effect */}
+        <BackgroundSpots />
         <div className="container mx-auto px-4 py-8 lg:px-8 lg:py-12">
           <div className="mb-8">
             <h1 className="text-4xl font-bold text-white mb-3">
