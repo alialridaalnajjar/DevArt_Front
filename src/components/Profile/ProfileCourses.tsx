@@ -17,7 +17,7 @@ export default function ProfileCourses() {
   ]
 
   return (
-    <div className="bg-[#243447] rounded-2xl border border-white/10 p-6">
+    <div className="bg-gray-950  rounded-2xl border border-white/10 p-6">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-bold text-white">My Courses</h2>
         <button

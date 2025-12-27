@@ -29,7 +29,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="bg-slate-900  px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <section className="bg-gray-950  px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="mb-12 text-center lg:mb-16">
@@ -50,7 +50,7 @@ export default function WhyChooseUs() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group rounded-2xl border border-slate-700/50 bg-slate-900  p-6 transition-all duration-300 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 sm:p-8"
+              className="group rounded-2xl border border-slate-700/50 bg-gray-950  p-6 transition-all duration-300 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 sm:p-8"
             >
               <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-orange-500 to-amber-600 sm:h-14 sm:w-14">
                 <feature.icon className="h-6 w-6 text-white sm:h-7 sm:w-7" />

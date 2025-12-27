@@ -91,8 +91,8 @@ export default function EditProfile({
   };
 
   return (
-    <div className="inset-0 backdrop-blur-lg min-h-screen z-20 fixed flex items-center justify-center bg-black/50">
-      <section className="w-[90%] max-w-2xl bg-slate-900 rounded-2xl border border-amber-500/40 shadow-2xl shadow-amber-500/10 p-8">
+    <div className="inset-0 backdrop-blur-lg min-h-screen z-20 fixed flex items-center justify-center bg-gray-950 ">
+      <section className="w-[90%] max-w-2xl bg-gray-950 rounded-2xl border border-amber-500/40 shadow-2xl shadow-amber-500/10 p-8">
         <div className="flex items-center justify-between mb-8">
           <div className="flex flex-col items-start justify-start">
             <h2 className="text-2xl font-bold text-white">Edit Profile</h2>

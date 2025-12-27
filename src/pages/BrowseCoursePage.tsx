@@ -105,7 +105,7 @@ export default function BrowseCoursePage() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-linear-to-tr bg-slate-900 py-8">
+      <div className="min-h-screen bg-linear-to-tr bg-gray-950  py-8">
         {/* Background Spots effect */}
         <BackgroundSpots />
         <div className="container mx-auto px-4 py-8 lg:px-8 lg:py-12">

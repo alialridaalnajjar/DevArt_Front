@@ -16,7 +16,7 @@ removeToken();
 navigate("/Login");
 }
   return (
-    <div className="bg-slate-900 pb-4 animate-slideDown">
+    <div className="bg-gray-950 pb-4 animate-slideDown">
       <div className="flex flex-col gap-1 px-4 pt-2">
         {navData.map((item, index) => {
           const Icon = item.icon;

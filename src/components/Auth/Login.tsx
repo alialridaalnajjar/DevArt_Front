@@ -64,7 +64,7 @@ export default function Login() {
   return (
     <>
       {/* For mobiles */}
-      <div className="lg:hidden min-h-screen bg-linear-to-br from-slate-900 via-gray-900 to-zinc-900 text-white p-5">
+      <div className="lg:hidden min-h-screen bg-linear-to-br from-gray-900 via-gray-950 to-gray-950 text-white p-5">
         <div className="flex flex-col items-center justify-center max-w-md mx-auto min-h-screen">
           <div className="text-center mb-8">
             <div className="inline-block p-4 bg-linear-to-br from-amber-600 to-amber-700 rounded-2xl mb-4 shadow-xl">
@@ -164,12 +164,12 @@ export default function Login() {
       </div>
 
       {/* Desktop view */}
-      <div className="hidden lg:flex min-h-screen bg-linear-to-br from-slate-900 via-gray-900 to-zinc-900">
+      <div className="hidden lg:flex min-h-screen bg-linear-to-t from-gray-900 via-gray-950 to-gray-950">
         {/* Left Side */}
         <div className="w-1/2 flex flex-col justify-center items-center p-16 relative overflow-hidden">
-          <div className="absolute inset-0 bg-linear-to-br from-amber-600/20 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-t from-amber-600/20 to-transparent"></div>
           <div className="relative z-10 max-w-lg">
-            <div className="inline-block p-6 bg-linear-to-br from-amber-600 to-amber-700 rounded-3xl mb-8 shadow-2xl">
+            <div className="inline-block p-6 bg-linear-to-tr from-amber-600 to-amber-700  rounded-3xl mb-8 shadow-2xl">
               <svg
                 className="w-16 h-16 text-white"
                 fill="none"
@@ -202,7 +202,7 @@ export default function Login() {
         </div>
 
         {/* Right Side */}
-        <div className="w-1/2 flex items-center justify-center p-16 bg-slate-900/50">
+        <div className="w-1/2 flex items-center justify-center p-16 bg-gray-950">
           <div className="w-full max-w-md">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold mb-2 text-white">

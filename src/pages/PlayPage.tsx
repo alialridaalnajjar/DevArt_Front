@@ -86,7 +86,7 @@ export default function WatchPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0f1419]">
+    <div className="min-h-screen bg-gray-950">
       <Navbar />
 
       <div className="container mx-auto px-4 py-8 lg:px-8">

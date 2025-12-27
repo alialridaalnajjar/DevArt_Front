@@ -49,7 +49,7 @@ export default function Faq() {
   };
 
   return (
-    <section className="bg-slate-900  px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <section className="bg-gray-950  px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-4xl">
         {/* Section Header!S */}
         <div className="mb-12 text-center lg:mb-16">
@@ -67,7 +67,7 @@ export default function Faq() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="rounded-xl border border-slate-700/50 bg-slate-900 transition-all duration-300 hover:border-orange-500/30"
+              className="rounded-xl border border-slate-700/50 bg-gray-950 transition-all duration-300 hover:border-orange-500/30"
             >
               <button
                 onClick={() => toggleFAQ(index)}

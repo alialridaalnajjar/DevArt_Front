@@ -18,7 +18,7 @@ export default function ProfileAchievements() {
       <MiniAct />
 
       {/* Achievements Section */}
-      <div className="bg-[#243447] rounded-2xl border border-white/10 p-6">
+      <div className="bg-gray-950 rounded-2xl border border-white/10 p-6">
         <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
           <Award className="h-5 w-5 text-orange-400" />
           Achievements
@@ -33,7 +33,7 @@ export default function ProfileAchievements() {
               return (
                 <div
                   key={index}
-                  className="bg-[#1a2332] rounded-xl p-4 border border-white/5 hover:border-orange-600/30 transition-all hover:scale-105"
+                  className="bg-gray-950  rounded-xl p-4 border border-white/5 hover:border-orange-600/30 transition-all hover:scale-105"
                 >
                   <div className="flex gap-3">
                     <div
@@ -59,7 +59,7 @@ export default function ProfileAchievements() {
       </div>
 
       {/* Skill Badges Section */}
-      <div className="bg-[#243447] rounded-2xl border border-white/10 p-6">
+      <div className="bg-gray-950  rounded-2xl border border-white/10 p-6">
         <h2 className="text-xl font-bold text-white mb-4">Skill Badges</h2>
         <div className="flex flex-wrap gap-2">
           {badges.map((badge, index) => (

@@ -28,7 +28,7 @@ export default function MiniAct() {
   }, []);
 
   return (
-    <div className="bg-[#1a2332] rounded-2xl border border-white/10 p-6">
+    <div className="bg-gray-950 rounded-2xl border border-white/10 p-6">
       <h2 className="text-xl font-bold text-white mb-4">Recent Activity</h2>
       <div className="space-y-3 text-sm">
         {activites.length > 0 ? (

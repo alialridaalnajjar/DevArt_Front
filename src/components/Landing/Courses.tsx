@@ -57,8 +57,7 @@ const categories = [
 
 export default function Courses() {
   return (
-    <section className="bg-slate-900  px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-      <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-orange-500/20 blur-3xl" />
+    <section className="bg-gray-950   px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
       <div className="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-orange-600/20 blur-3xl" />
 
       <div className="mx-auto max-w-7xl">
@@ -78,7 +77,7 @@ export default function Courses() {
               <Link
                 to={`/courses/${category.path}`}
                 key={category.title}
-                className="group cursor-pointer rounded-2xl border border-slate-700 bg-[#1a2332] p-8 transition-all hover:scale-105 hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-500/10"
+                className="group cursor-pointer rounded-2xl border border-slate-700  bg-gray-950  p-8 transition-all hover:scale-105 hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-500/10"
               >
                 <div
                   className={`inline-flex h-16 w-16 items-center justify-center rounded-xl bg-linear-to-br ${category.color} shadow-lg transition-transform group-hover:scale-110`}

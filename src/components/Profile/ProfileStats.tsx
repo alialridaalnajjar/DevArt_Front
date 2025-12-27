@@ -33,7 +33,7 @@ export default function ProfileStats() {
   ];
 
   return (
-    <div className="bg-[#243447] rounded-2xl border border-white/10 p-6">
+    <div className="bg-gray-950  rounded-2xl border border-white/10 p-6">
       <h2 className="text-xl font-bold text-white mb-6">Learning Statistics</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat) => {
