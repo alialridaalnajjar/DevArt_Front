@@ -1,9 +1,33 @@
 import { Home, Book, Search, LogIn } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuthCookies from "../../utils/UseAuth";
-
+import { User } from 'lucide-react';
+import { useEffect, useState } from "react";
 export default function NavExpansion() {
+
   const { isAuthenticated, getDecodedToken,removeToken } = useAuthCookies();
+  const [image, setImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchProfileImage = async () => {
+      const token = getDecodedToken();
+      if (token) {
+        try {
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/profile/${token.userId}`
+          );
+          if (response.ok) {
+            const data = await response.json();
+            setImage(data.user.profile_photo_url);
+          }
+        } catch (error) {
+          console.error("Error fetching profile image:", error);
+        }
+      }
+    };
+    fetchProfileImage();
+  }, [getDecodedToken]);
+
   const navigate = useNavigate();
   const token = getDecodedToken();
   const navData: { icon: React.ElementType; title: string; link: string }[] = [
@@ -11,10 +35,10 @@ export default function NavExpansion() {
     { icon: Book, title: "Courses", link: "/Courses/All" },
     { icon: Search, title: "Search", link: "/Search" },
   ];
-const handleLogout = () => {
-removeToken();
-navigate("/Login");
-}
+  const handleLogout = () => {
+    removeToken();
+    navigate("/Login");
+  }
   return (
     <div className="bg-gray-950 pb-4 animate-slideDown">
       <div className="flex flex-col gap-1 px-4 pt-2">
@@ -35,9 +59,17 @@ navigate("/Login");
           <>
             <Link
               to={`/Profile/${token?.userId}`}
-              className="flex items-center gap-4 rounded-lg px-4 py-3 text-gray-300 transition-all hover:bg-slate-800/50 hover:text-amber-500 active:scale-95"
+              className="flex items-center gap-4 rounded-lg px-2.5 py-3 text-gray-300 transition-all hover:bg-slate-800/50 hover:text-amber-500 active:scale-95"
             >
-              <LogIn className="h-5 w-5" />
+              {image ? (
+                <img 
+                  src={image} 
+                  alt="Profile" 
+                  className="h-8 w-8 rounded-md object-cover border border-white/20 space-x-12" 
+                />
+              ) : (
+                <User className="h-5 w-5" />
+              )}
               <span className="text-sm font-medium">{token?.username}</span>
             </Link>
             <button
