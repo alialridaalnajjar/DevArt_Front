@@ -58,8 +58,6 @@ const categories = [
 export default function Courses() {
   return (
     <section className="bg-gray-950   px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-      <div className="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-orange-600/20 blur-3xl" />
-
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
