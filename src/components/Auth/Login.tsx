@@ -9,9 +9,11 @@ export default function Login() {
   const [credentials, setCredentials] = useState<{
     email: string;
     password: string;
+    rememberMe: boolean;
   }>({
     email: "",
     password: "",
+    rememberMe: false,
   });
 
   const [error, setError] = useState<string>("");
@@ -35,16 +37,20 @@ export default function Login() {
     }
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: credentials.email,
-          password: credentials.password,
-        }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: credentials.email,
+            password: credentials.password,
+            rememberMe: credentials.rememberMe,
+          }),
+        }
+      );
 
       if (!response.ok) {
         setError("Invalid email or password");
@@ -130,6 +136,10 @@ export default function Login() {
               <label className="flex items-center text-gray-300">
                 <input
                   type="checkbox"
+                  checked={credentials.rememberMe}
+                  onChange={(e) =>
+                    setCredentials({ ...credentials, rememberMe: e.target.checked })
+                  }
                   className="mr-2 w-4 h-4 rounded border-slate-700 bg-slate-800/50 text-amber-600 focus:ring-amber-600"
                 />
                 Remember me
@@ -251,6 +261,13 @@ export default function Login() {
                 <label className="flex items-center text-gray-300 cursor-pointer">
                   <input
                     type="checkbox"
+                    checked={credentials.rememberMe}
+                    onChange={(e) =>
+                      setCredentials({
+                        ...credentials,
+                        rememberMe: e.target.checked,
+                      })
+                    }
                     className="mr-2 w-4 h-4 rounded border-slate-700 bg-slate-800/50 text-amber-600 focus:ring-amber-600 cursor-pointer"
                   />
                   Remember me
