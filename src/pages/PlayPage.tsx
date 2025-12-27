@@ -2,7 +2,7 @@
 
 import { ChevronDown, ChevronUp, Clock, FileText, Tag } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import MiniAct from "../components/Profile/Reusable/MiniAct";
 import Navbar from "../components/Reusable/Navbar";
 import { type Documentation, type Video } from "../utils/Types";
@@ -35,8 +35,9 @@ const documentations = [
 export default function WatchPage() {
   const [docs, setDocs] = useState<Documentation[]>([]);
   const [videoData, setVideoData] = useState<Video>({} as Video);
+  const [nextVideoData, setNextVideoData] = useState<Video[]>([] as Video[]);
   const { videoId } = useParams();
-
+  const { courseName } = useParams();
   useEffect(() => {
     const fetchDocs = async () => {
       try {
@@ -67,7 +68,25 @@ export default function WatchPage() {
       }
     };
     fetchVideo();
-  }, [videoId]);
+
+    const nextVideos = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/video/genre/${courseName}`,
+          {
+            method: "GET",
+          }
+        );
+        const data = await response.json();
+        console.log("next vids:", data);
+        setNextVideoData(data);
+      } catch (error) {
+        console.error("Error fetching next video data:", error);
+        setNextVideoData([] as Video[]);
+      }
+    };
+    nextVideos();
+  }, [courseName, videoId]);
 
   const [expandedDoc, setExpandedDoc] = useState<number | null>(null);
   const video = videos.find((v) => v.video_id === Number(videoId)) || videos[0];
@@ -105,7 +124,7 @@ export default function WatchPage() {
             </div>
 
             {/* Video Information */}
-            <div className="bg-[#1a2332] rounded-lg p-6 border border-[#2a3441]">
+            <div className="bg-gray-950 rounded-lg p-6 border border-[#2a3441]">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
                   <h1 className="text-2xl lg:text-3xl font-bold text-white mb-3">
@@ -153,7 +172,7 @@ export default function WatchPage() {
             </div>
 
             {/* Documentation Section */}
-            <div className="bg-[#1a2332] rounded-lg p-6 border border-[#2a3441]">
+            <div className="bg-gray-950 rounded-lg p-6 border border-[#2a3441]">
               <div className="flex items-center gap-3 mb-6">
                 <FileText className="h-6 w-6 text-orange-500" />
                 <h2 className="text-xl font-bold text-white">
@@ -211,13 +230,14 @@ export default function WatchPage() {
             <MiniAct />
             <div className="pt-5 sticky top-4 space-y-6">
               {/* Up Next */}
-              <div className="bg-[#1a2332] rounded-lg p-6 border border-[#2a3441]">
+              <div className="bg-gray-950 rounded-lg p-6 border border-[#2a3441]">
                 <h3 className="text-lg font-bold text-white mb-4">Up Next</h3>
-                <div className="space-y-3">
-                  {videos
-                    .filter((v) => v.video_id !== video.video_id)
-                    .slice(0, 3)
+                <div className=" flex flex-col gap-4">
+                  {nextVideoData
+                    .filter((v) => v.video_id !== videoData.video_id)
+                    .slice(0, 2)
                     .map((v) => (
+                      <Link to={`/Courses/${courseName}/${v.video_id}`} >
                       <a
                         key={v.video_id}
                         href={`/watch?videoId=${v.video_id}`}
@@ -229,10 +249,10 @@ export default function WatchPage() {
                         <div className="flex items-center gap-2 text-xs text-gray-500">
                           <Clock className="h-3 w-3" />
                           <span>{formatDuration(v.duration_seconds)}</span>
-                          <span>•</span>
+                          <span>#</span>
                           <span className="text-orange-400">{v.genre}</span>
                         </div>
-                      </a>
+                      </a></Link>
                     ))}
                 </div>
               </div>

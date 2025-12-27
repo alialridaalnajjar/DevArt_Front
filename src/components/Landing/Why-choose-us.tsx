@@ -4,9 +4,9 @@ export default function WhyChooseUs() {
   const features = [
     {
       icon: CheckCircle,
-      title: "Expert-led Courses",
+      title: "Direct Courses",
       description:
-        "Learn from professionals real skills and topics that are essentials for software development.",
+        "Direct and straight to the most important parts of development.",
     },
     {
       icon: Zap,
@@ -22,9 +22,9 @@ export default function WhyChooseUs() {
     },
     {
       icon: Award,
-      title: "Certification",
+      title: "Multiple Topics",
       description:
-        "Earn certificates upon completion to showcase your new skills.",
+        "Explore a wide range of development topics, from Frontend to Backend and more.",
     },
   ];
 
