@@ -33,7 +33,7 @@ export default function Navbar() {
                   />
                 </svg>
               </div>
-              <span className="text-2xl font-bold text-orange-500">DevArt</span>
+              <span className="text-2xl font-bold text-orange-500">Dev<span className="text-amber-50">Art</span></span>
             </Link>
 
             {/* Navigation divs */}

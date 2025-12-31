@@ -6,6 +6,7 @@ import WhyChooseUs from "../components/Landing/Why-choose-us";
 import Navbar from "../components/Reusable/Navbar";
 import useAuthCookies from "../utils/UseAuth";
 import IsNewUser from "./Controllers/IsNewUser";
+import Footer from "../components/Reusable/Footer";
 export default function LandingPage() {
   const { isAuthenticated } = useAuthCookies();
   const [isNewUser, setIsNewUser] = useState<boolean>(false);
@@ -37,6 +38,7 @@ export default function LandingPage() {
       <Faq />
       <WhyChooseUs />
       {isAuthenticated || <CTASection />}
+      <Footer />
     </>
   );
 }
