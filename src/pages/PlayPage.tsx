@@ -6,33 +6,10 @@ import { Link, useParams } from "react-router-dom";
 import MiniAct from "../components/Profile/reusable/MiniAct";
 import Navbar from "../components/Reusable/Navbar";
 import { type Documentation, type Video } from "../utils/Types";
-// Mock video data
-const videos = [
-  {
-    video_id: 1,
-    module_id: 1,
-    title: "Introduction to React Hooks",
-    video_url: "https://www.youtube.com/embed/dpw9EHDh2bM",
-    duration_seconds: 600,
-    description:
-      "Learn the basics of React Hooks, including useState and useEffect, to manage state and side effects in your React applications.",
-    genre: "Education",
-  },
-];
-
-// Mock documentation data
-const documentations = [
-  {
-    doc_id: 1,
-    title: "Getting Started with React Hooks",
-    content:
-      "React Hooks are functions that let you use state and other React features in functional components. The most commonly used hooks are useState and useEffect. useState allows you to add state to functional components, while useEffect lets you perform side effects in your components.",
-    course_id: 1,
-    video_fk: 1,
-  },
-];
 
 export default function WatchPage() {
+  const [status, setStatus] = useState<boolean>(false);
+
   const [docs, setDocs] = useState<Documentation[]>([]);
   const [videoData, setVideoData] = useState<Video>({} as Video);
   const [nextVideoData, setNextVideoData] = useState<Video[]>([] as Video[]);
@@ -85,11 +62,38 @@ export default function WatchPage() {
     nextVideos();
   }, [courseName, videoId]);
 
+  const fetchStatus = async () => {
+    if (status === false) {
+      try {
+        await fetch(
+          `${import.meta.env.VITE_API_URL}/api/video/mark_completed/${videoId}`,
+          { method: "PUT" }
+        );
+      } catch (error) {
+        console.error("Error marking video as completed:", error);
+      }
+    } else {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/video/status/${videoId}`,
+          { method: "GET" }
+        );
+        const data = await response.json();
+        setStatus(data.is_completed);
+      } catch (error) {
+        console.error("Error fetching video status:", error);
+        setStatus(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    (async () => {
+      await fetchStatus();
+    })();
+  }, []);
+
   const [expandedDoc, setExpandedDoc] = useState<number | null>(null);
-  const video = videos.find((v) => v.video_id === Number(videoId)) || videos[0];
-  const relatedDocs = documentations.filter(
-    (doc) => doc.video_fk === video.video_id
-  );
 
   const formatDuration = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -165,6 +169,16 @@ export default function WatchPage() {
                     </span>
                   </span>
                 </div>
+
+                <div className="hover:cursor-pointer flex items-center gap-2 px-3 py-2 bg-orange-500/10 border border-orange-500/30 rounded-lg">
+                  <span
+                    className={`text-sm font-medium ${
+                      status ? "text-red-400" : "text-orange-400"
+                    }`}
+                  >
+                    Mark as {status ? "Incomplete" : "Completed"}
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -177,7 +191,7 @@ export default function WatchPage() {
                 </h2>
               </div>
 
-              {relatedDocs.length > 0 ? (
+              {docs.length > 0 ? (
                 <div className="space-y-3">
                   {docs.map((doc) => (
                     <div
@@ -234,22 +248,23 @@ export default function WatchPage() {
                     .filter((v) => v.video_id !== videoData.video_id)
                     .slice(0, 2)
                     .map((v) => (
-                      <Link to={`/Courses/${courseName}/${v.video_id}`} >
-                      <a
-                        key={v.video_id}
-                        href={`/watch?videoId=${v.video_id}`}
-                        className="block group bg-[#0f1419] rounded-lg p-3 border border-[#2a3441] hover:border-orange-500 transition-all"
-                      >
-                        <h4 className="text-sm font-semibold text-white group-hover:text-orange-500 transition-colors line-clamp-2 mb-2">
-                          {v.title}
-                        </h4>
-                        <div className="flex items-center gap-2 text-xs text-gray-500">
-                          <Clock className="h-3 w-3" />
-                          <span>{formatDuration(v.duration_seconds)}</span>
-                          <span>#</span>
-                          <span className="text-orange-400">{v.genre}</span>
-                        </div>
-                      </a></Link>
+                      <Link to={`/Courses/${courseName}/${v.video_id}`}>
+                        <a
+                          key={v.video_id}
+                          href={`/watch?videoId=${v.video_id}`}
+                          className="block group bg-[#0f1419] rounded-lg p-3 border border-[#2a3441] hover:border-orange-500 transition-all"
+                        >
+                          <h4 className="text-sm font-semibold text-white group-hover:text-orange-500 transition-colors line-clamp-2 mb-2">
+                            {v.title}
+                          </h4>
+                          <div className="flex items-center gap-2 text-xs text-gray-500">
+                            <Clock className="h-3 w-3" />
+                            <span>{formatDuration(v.duration_seconds)}</span>
+                            <span>#</span>
+                            <span className="text-orange-400">{v.genre}</span>
+                          </div>
+                        </a>
+                      </Link>
                     ))}
                 </div>
               </div>

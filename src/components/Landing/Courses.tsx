@@ -64,7 +64,7 @@ export default function Courses() {
             Explore Course <span className="text-orange-500">Categories</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-pretty text-lg text-slate-300">
-            Find the perfect course to advance your career and master new skills
+            Find the perfect tutorials to advance your career and master new skills
           </p>
         </div>
 
