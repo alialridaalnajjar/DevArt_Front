@@ -1,11 +1,38 @@
-"use client"
-
 import { ArrowRight, BookOpen, Users, Award } from "lucide-react"
 import { Link } from "react-router-dom"
 
+const STARS = Array.from({ length: 50 }, (_, i) => ({
+  id: i,
+  left: Math.random() * 100,
+  delay: Math.random() * 5,
+  duration: 8 + Math.random() * 4,
+  size: Math.random() * 2 + 1,
+}))
+
 export default function WelcomeSection() {
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-b from-gray-950 via-gray-950 to-gray-950">
+      {/* Raining Stars Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {STARS.map((star) => (
+          <div
+            key={star.id}
+            className="absolute rounded-full bg-white animate-fall"
+            style={{
+              left: `${star.left}%`,
+              top: `-10px`,
+              width: `${star.size}px`,
+              height: `${star.size}px`,
+              opacity: 0.8,
+              boxShadow: `0 0 ${8 + star.size}px rgba(249, 115, 22, 0.8)`,
+              animationDelay: `${star.delay}s`,
+              animationDuration: `${star.duration}s`,
+            }}
+          />
+        ))}
+      </div>
+
       {/* Glowing Orbs - Orange theme */}
       <div className="absolute top-20 left-10 w-96 h-96 bg-orange-600/12 rounded-full blur-3xl opacity-60 animate-pulse" />
       <div
@@ -21,7 +48,7 @@ export default function WelcomeSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center space-y-8">
           {/* Animated Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-orange-500/20 to-orange-600/20 border border-orange-500/40 backdrop-blur-sm animate-bounce-slow">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-orange-500/20 to-orange-600/20 border border-orange-500/40 backdrop-blur-sm animate-bounce-fast">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
@@ -39,7 +66,7 @@ export default function WelcomeSection() {
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-balance">
-            Join thousands of developers mastering their craft through expert-led courses, real-world projects, and a
+            Join hundreds of developers mastering their craft through tutorials, real-world projects, and a
             vibrant learning community.
           </p>
 
@@ -48,15 +75,15 @@ export default function WelcomeSection() {
             <button
               className="bg-linear-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-6 text-lg font-semibold shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition-all duration-300 group rounded-lg"
             >
-              <Link to="/courses" className="flex items-center">
+              <a href="#courses" className="flex items-center">
                 Explore Courses
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </a>
             </button>
             <button
               className="border-2 border-orange-500/50 hover:border-orange-400 text-white px-8 py-6 text-lg font-semibold backdrop-blur-sm bg-orange-950/20 hover:bg-orange-500/10 transition-all duration-300 rounded-lg"
             >
-              <Link to="/browse-course">Browse Videos</Link>
+              <Link to="/Courses/All">Browse Videos</Link>
             </button>
           </div>
 
@@ -65,8 +92,8 @@ export default function WelcomeSection() {
             {[
               {
                 icon: BookOpen,
-                title: "500+ Courses",
-                description: "Expert-led video tutorials",
+                title: "Direct Tutorials",
+                description: "Direct and straight to the most important parts of development.",
                 color: "from-orange-500 to-orange-600",
               },
               {
@@ -77,8 +104,8 @@ export default function WelcomeSection() {
               },
               {
                 icon: Award,
-                title: "Certificates",
-                description: "Earn verified credentials",
+                title: "Real-world Topics",
+                description: "Master practical skills that you can apply immediately to your projects and career.",
                 color: "from-orange-500 to-orange-600",
               },
             ].map((feature, index) => (
@@ -107,19 +134,19 @@ export default function WelcomeSection() {
       </div>
 
       <style>{`
-        @keyframes shooting {
+        @keyframes fall {
           0% {
-            transform: translateX(0) translateY(0) rotate(-45deg);
+            transform: translateY(0) translateX(0);
             opacity: 0;
           }
           10% {
-            opacity: 1;
+            opacity: 0.8;
           }
-          70% {
-            opacity: 1;
+          90% {
+            opacity: 0.8;
           }
           100% {
-            transform: translateX(-500px) translateY(500px) rotate(-45deg);
+            transform: translateY(100vh) translateX(100px);
             opacity: 0;
           }
         }
@@ -135,26 +162,8 @@ export default function WelcomeSection() {
           }
         }
 
-        .shooting-star {
-          position: absolute;
-          width: 3px;
-          height: 3px;
-          background: white;
-          border-radius: 50%;
-          box-shadow: 0 0 15px 3px rgba(249, 115, 22, 0.6);
-          animation: shooting 3s linear infinite;
-        }
-
-        .shooting-star::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 120px;
-          height: 2px;
-          background: linear-gradient(to right, rgba(249, 115, 22, 0) 0%, rgba(249, 115, 22, 0.8) 50%, rgba(216, 90, 12, 0.6) 100%);
-          transform: translateX(2px) rotate(-45deg);
-          border-radius: 50%;
+        .animate-fall {
+          animation: fall linear infinite;
         }
 
         @keyframes bounce-slow {
@@ -166,9 +175,6 @@ export default function WelcomeSection() {
           }
         }
 
-        .animate-bounce-slow {
-          animation: bounce-slow 2.5s ease-in-out infinite;
-        }
 
         .animate-scroll {
           animation: scroll 2.5s ease-in-out infinite;

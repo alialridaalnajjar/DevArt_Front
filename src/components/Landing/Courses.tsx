@@ -49,7 +49,7 @@ const categories = [
   {
     icon: Smartphone,
     title: "All",
-    courses: 0,
+    courses: 3,
     color: "from-green-500 to-green-600",
     path: "All",
   },
@@ -57,7 +57,7 @@ const categories = [
 
 export default function Courses() {
   return (
-    <section className="bg-gray-950   px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <section className="bg-gray-950   px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24" id="courses">
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
