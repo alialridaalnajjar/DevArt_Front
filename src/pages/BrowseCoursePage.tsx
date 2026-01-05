@@ -6,6 +6,7 @@ import type { Video } from "../utils/Types";
 import { ArrowDownWideNarrow } from "lucide-react";
 import { ArrowUpWideNarrow } from "lucide-react";
 import BackgroundSpots from "./Reusable/BackgroundSpots";
+import Footer from "../components/Reusable/Footer";
 const genres = [
   "All",
   "React.js",
@@ -102,7 +103,7 @@ export default function BrowseCoursePage() {
   };
 
   return (
-    <>
+    <div className="min-h-screen h-auto">
       <Navbar />
       <div className="min-h-screen bg-linear-to-tr bg-gray-950  py-8">
         {/* Background Spots effect */}
@@ -262,6 +263,7 @@ export default function BrowseCoursePage() {
           )}
         </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }

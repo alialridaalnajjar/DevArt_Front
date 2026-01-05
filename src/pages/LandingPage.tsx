@@ -7,6 +7,7 @@ import Navbar from "../components/Reusable/Navbar";
 import useAuthCookies from "../utils/UseAuth";
 import IsNewUser from "./Controllers/IsNewUser";
 import Footer from "../components/Reusable/Footer";
+import WelcomeSection from "../components/Landing/Welcome";
 export default function LandingPage() {
   const { isAuthenticated } = useAuthCookies();
   const [isNewUser, setIsNewUser] = useState<boolean>(false);
@@ -34,6 +35,7 @@ export default function LandingPage() {
     <>
       {isNewUser && isAuthenticated && <IsNewUser  setIsNewUser={setIsNewUser}/>}
       <Navbar />
+      <WelcomeSection />
       <Courses />
       <Faq />
       <WhyChooseUs />

@@ -18,6 +18,7 @@ export default function MiniAct() {
       const data = await response.json();
       setActivities(data.activities);
     } catch (error) {
+      console.log("Error fetching activities:", error);
     }
   };
 
