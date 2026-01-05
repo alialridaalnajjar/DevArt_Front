@@ -1,4 +1,4 @@
-# Codeleb Front
+# DevArt 
 
 A modern learning platform built with React, TypeScript, and Firebase. This platform provides an interactive course browsing experience, user authentication, and personalized profile management.
 
@@ -35,7 +35,7 @@ A modern learning platform built with React, TypeScript, and Firebase. This plat
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd Codeleb_Front
+cd DevArt_Front
 ```
 
 2. Install dependencies:

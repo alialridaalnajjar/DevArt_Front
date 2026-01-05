@@ -14,11 +14,11 @@ export default function WelcomeSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-b from-gray-950 via-gray-950 to-gray-950">
       {/* Raining Stars Background */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden ">
         {STARS.map((star) => (
           <div
             key={star.id}
-            className="absolute rounded-full bg-white animate-fall"
+            className=" absolute rounded-full bg-white animate-fall"
             style={{
               left: `${star.left}%`,
               top: `-10px`,
@@ -45,7 +45,7 @@ export default function WelcomeSection() {
       <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-orange-600/6 rounded-full blur-3xl opacity-40 animate-pulse" style={{ animationDuration: "5s", animationDelay: "0.5s" }} />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className=" relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center space-y-8">
           {/* Animated Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-orange-500/20 to-orange-600/20 border border-orange-500/40 backdrop-blur-sm animate-bounce-fast">
