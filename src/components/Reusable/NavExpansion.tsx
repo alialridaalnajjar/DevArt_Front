@@ -1,11 +1,10 @@
 import { Home, Book, Search, LogIn } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuthCookies from "../../utils/UseAuth";
-import { User } from 'lucide-react';
+import { User } from "lucide-react";
 import { useEffect, useState } from "react";
 export default function NavExpansion() {
-
-  const { isAuthenticated, getDecodedToken,removeToken } = useAuthCookies();
+  const { isAuthenticated, getDecodedToken, removeToken } = useAuthCookies();
   const [image, setImage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -38,9 +37,9 @@ export default function NavExpansion() {
   const handleLogout = () => {
     removeToken();
     navigate("/Login");
-  }
+  };
   return (
-    <div className="bg-gray-950 pb-4 animate-slideDown">
+    <div className="bg-gray-950 pb-4 animate-slide-out-bottom animate-duration-900 ">
       <div className="flex flex-col gap-1 px-4 pt-2">
         {navData.map((item, index) => {
           const Icon = item.icon;
@@ -59,13 +58,13 @@ export default function NavExpansion() {
           <>
             <Link
               to={`/Profile/${token?.userId}`}
-              className="flex items-center gap-4 rounded-lg px-2.5 py-3 text-gray-300 transition-all hover:bg-slate-800/50 hover:text-amber-500 active:scale-95"
+              className="flex items-center gap-4 rounded-lg px-3.5 py-3 text-gray-300 transition-all hover:bg-slate-800/50 hover:text-amber-500 active:scale-95"
             >
               {image ? (
-                <img 
-                  src={image} 
-                  alt="Profile" 
-                  className="h-8 w-8 rounded-md object-cover border border-white/20 space-x-12" 
+                <img
+                  src={image}
+                  alt="Profile"
+                  className="h-8 w-8 rounded-md object-cover border border-white/20 space-x-12"
                 />
               ) : (
                 <User className="h-5 w-5" />
