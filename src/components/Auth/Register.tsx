@@ -21,23 +21,86 @@ export default function Register() {
     last_name: "",
   });
 
+  const [error, setError] = useState<string>("");
+
+  const validateForm = (): boolean => {
+    setError("");
+
+    // Check if all required fields are filled
+    if (
+      !user.first_name ||
+      !user.last_name ||
+      !user.username ||
+      !user.email ||
+      !user.password
+    ) {
+      setError("Please fill in all required fields");
+      return false;
+    }
+
+    // Validate username length (at least 3 characters)
+    if (user.username.length < 3) {
+      setError("Username must be at least 3 characters long");
+      return false;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(user.email)) {
+      setError("Please enter a valid email address");
+      return false;
+    }
+
+    // Validate password length
+    if (user.password.length < 6) {
+      setError("Password must be at least 6 characters long");
+      return false;
+    }
+
+    // Validate first and last name
+    if (user.first_name.length < 2) {
+      setError("First name must be at least 2 characters long");
+      return false;
+    }
+
+    if (user.last_name.length < 2) {
+      setError("Last name must be at least 2 characters long");
+      return false;
+    }
+
+    return true;
+  };
+
   const handleRegister = async () => {
-    const res = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/auth/register`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
+    if (!validateForm()) {
+      return;
+    }
+
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/auth/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        }
+      );
+
+      if (res.ok) {
+        const data = await res.json();
+        saveToken(data.token);
+        navigate("/");
+      } else {
+        const errorData = await res.json();
+        setError(
+          errorData.message || "Registration failed. Please try again."
+        );
       }
-    );
-
-    if (res.ok) {
-      const data = await res.json();
-      saveToken(data.token);
-
-      navigate("/");
+    } catch (err) {
+      setError("An error occurred. Please try again later.");
+      console.error("Registration error:", err);
     }
   };
 
@@ -53,6 +116,12 @@ export default function Register() {
           </div>
 
           <div className="w-full space-y-4">
+            {error && (
+              <div className="bg-red-500/10 border border-red-500 text-red-500 px-4 py-3 rounded-lg text-sm">
+                {error}
+              </div>
+            )}
+
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium mb-2 text-gray-300">
@@ -241,6 +310,12 @@ export default function Register() {
             </div>
 
             <div className="space-y-4">
+              {error && (
+                <div className="bg-red-500/10 border border-red-500 text-red-500 px-4 py-3 rounded-lg text-sm">
+                  {error}
+                </div>
+              )}
+
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-2 text-gray-300">
