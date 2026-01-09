@@ -33,7 +33,7 @@ export default function MiniAct() {
         {activites.length > 0 ? (
           activites.map((act, index) => {
             return (
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-3" key={index}>
                 <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5" />
                 <div key={index}>
                   <p className="text-gray-300">Completed {act.title}</p>

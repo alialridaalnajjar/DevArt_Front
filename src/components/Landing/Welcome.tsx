@@ -105,7 +105,7 @@ export default function WelcomeSection() {
               },
               {
                 icon: Users,
-                title: "50K+ Students",
+                title: "50+ Students",
                 description: "Active learning community",
                 color: "from-orange-600 to-orange-700",
               },

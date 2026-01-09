@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import Courses from "../components/Landing/Courses";
 import CTASection from "../components/Landing/CTA";
 import Faq from "../components/Landing/Faq";
+import WelcomeSection from "../components/Landing/Welcome";
 import WhyChooseUs from "../components/Landing/Why-choose-us";
+import Footer from "../components/Reusable/Footer";
 import Navbar from "../components/Reusable/Navbar";
 import useAuthCookies from "../utils/UseAuth";
 import IsNewUser from "./Controllers/IsNewUser";
-import Footer from "../components/Reusable/Footer";
-import WelcomeSection from "../components/Landing/Welcome";
 export default function LandingPage() {
   const { isAuthenticated } = useAuthCookies();
   const [isNewUser, setIsNewUser] = useState<boolean>(false);
@@ -40,7 +40,6 @@ export default function LandingPage() {
       <WelcomeSection />
       <Courses />
       <WhyChooseUs />
-
       <Faq />
       {isAuthenticated || <CTASection />}
       <Footer />
