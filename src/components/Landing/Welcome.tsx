@@ -1,16 +1,15 @@
-import { ArrowRight, BookOpen, Users, Award } from "lucide-react"
-import { Link } from "react-router-dom"
+import { ArrowRight, BookOpen, Users, Award } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const STARS = Array.from({ length: 50 }, (_, i) => ({
   id: i,
   left: Math.random() * 100,
   delay: Math.random() * 5,
-  duration: 8 + Math.random() * 4,
+  duration: 6 + Math.random() * 4,
   size: Math.random() * 2 + 1,
-}))
+}));
 
 export default function WelcomeSection() {
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-b from-gray-950 via-gray-950 to-gray-950">
       {/* Raining Stars Background */}
@@ -39,10 +38,16 @@ export default function WelcomeSection() {
         className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500/12 rounded-full blur-3xl opacity-60 animate-pulse"
         style={{ animationDelay: "1.5s" }}
       />
-      
+
       {/* Secondary subtle orbs */}
-      <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-orange-500/6 rounded-full blur-3xl opacity-40 animate-pulse" style={{ animationDuration: "4s" }} />
-      <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-orange-600/6 rounded-full blur-3xl opacity-40 animate-pulse" style={{ animationDuration: "5s", animationDelay: "0.5s" }} />
+      <div
+        className="absolute top-1/3 right-1/4 w-72 h-72 bg-orange-500/6 rounded-full blur-3xl opacity-40 animate-pulse"
+        style={{ animationDuration: "4s" }}
+      />
+      <div
+        className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-orange-600/6 rounded-full blur-3xl opacity-40 animate-pulse"
+        style={{ animationDuration: "5s", animationDelay: "0.5s" }}
+      />
 
       {/* Content */}
       <div className=" relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -53,7 +58,9 @@ export default function WelcomeSection() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
             </span>
-            <span className="text-orange-400 font-medium text-sm">Welcome to DevArt</span>
+            <span className="text-orange-400 font-medium text-sm">
+              Welcome to DevArt
+            </span>
           </div>
 
           {/* Main Heading with Gradient */}
@@ -66,25 +73,24 @@ export default function WelcomeSection() {
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed text-balance">
-            Join hundreds of developers mastering their craft through tutorials, real-world projects, and a
-            vibrant learning community.
+            Join hundreds of developers mastering their craft through tutorials,
+            real-world projects, and a vibrant learning community.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <button
-              className="bg-linear-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-6 text-lg font-semibold shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition-all duration-300 group rounded-lg"
-            >
+            <button className="bg-linear-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-6 text-lg font-semibold shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition-all duration-300 group rounded-lg">
               <a href="#courses" className="flex items-center">
                 Explore Courses
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </button>
-            <button
+            <Link
+              to="/Courses/All"
               className="border-2 border-orange-500/50 hover:border-orange-400 text-white px-8 py-6 text-lg font-semibold backdrop-blur-sm bg-orange-950/20 hover:bg-orange-500/10 transition-all duration-300 rounded-lg"
             >
-              <Link to="/Courses/All">Browse Videos</Link>
-            </button>
+              <h1>Browse Videos</h1>
+            </Link>
           </div>
 
           {/* Feature Cards */}
@@ -93,7 +99,8 @@ export default function WelcomeSection() {
               {
                 icon: BookOpen,
                 title: "Direct Tutorials",
-                description: "Direct and straight to the most important parts of development.",
+                description:
+                  "Direct and straight to the most important parts of development.",
                 color: "from-orange-500 to-orange-600",
               },
               {
@@ -105,7 +112,8 @@ export default function WelcomeSection() {
               {
                 icon: Award,
                 title: "Real-world Topics",
-                description: "Master practical skills that you can apply immediately to your projects and career.",
+                description:
+                  "Master practical skills that you can apply immediately to your projects and career.",
                 color: "from-orange-500 to-orange-600",
               },
             ].map((feature, index) => (
@@ -118,7 +126,9 @@ export default function WelcomeSection() {
                 >
                   <feature.icon className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {feature.title}
+                </h3>
                 <p className="text-gray-300">{feature.description}</p>
               </div>
             ))}
@@ -181,5 +191,5 @@ export default function WelcomeSection() {
         }
       `}</style>
     </section>
-  )
+  );
 }

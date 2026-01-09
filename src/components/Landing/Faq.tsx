@@ -49,7 +49,7 @@ export default function Faq() {
   };
 
   return (
-    <section className="bg-gray-950  px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <section className="bg-gray-950  px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 lg:mb-10">
       <div className="mx-auto max-w-4xl">
         {/* Section Header!S */}
         <div className="mb-12 text-center lg:mb-16">

@@ -18,7 +18,7 @@ export default function LandingPage() {
         const response = await fetch(
           `${import.meta.env.VITE_API_URL}/api/isNew/${userId}`,
           {
-            method: "GET"
+            method: "GET",
           }
         );
         const data = await response.json();
@@ -33,12 +33,15 @@ export default function LandingPage() {
 
   return (
     <>
-      {isNewUser && isAuthenticated && <IsNewUser  setIsNewUser={setIsNewUser}/>}
+      {isNewUser && isAuthenticated && (
+        <IsNewUser setIsNewUser={setIsNewUser} />
+      )}
       <Navbar />
       <WelcomeSection />
       <Courses />
-      <Faq />
       <WhyChooseUs />
+
+      <Faq />
       {isAuthenticated || <CTASection />}
       <Footer />
     </>

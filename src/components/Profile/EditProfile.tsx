@@ -76,6 +76,7 @@ export default function EditProfile({
 
 
       refetchProfile();
+      setEdit(false);
     } catch (error) {
       console.error("Error updating profile:", error);
       alert("An error occurred. Please try again.");
@@ -85,9 +86,9 @@ export default function EditProfile({
   };
 
   return (
-    <div className="inset-0 backdrop-blur-lg min-h-screen z-20 fixed flex items-center justify-center bg-gray-950 ">
+    <div className="inset-0 backdrop-blur-lg min-h-screen z-20 fixed flex items-center justify-center bg-gray-950 pt-20 max-h-avail overflow-auto">
       <section className="w-[90%] max-w-2xl bg-gray-950 rounded-2xl border border-amber-500/40 shadow-2xl shadow-amber-500/10 p-8">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between lg:mb-8 mb-4">
           <div className="flex flex-col items-start justify-start">
             <h2 className="text-2xl font-bold text-white">Edit Profile</h2>
             <h5 className="text-red-600/60 text-sm">
@@ -104,7 +105,7 @@ export default function EditProfile({
           </button>
         </div>
 
-        <form onSubmit={handleEditProfile} className="flex flex-col gap-6">
+        <form onSubmit={handleEditProfile} className="flex flex-col lg:gap-6 gap-4">
           {/* Name Fields */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
