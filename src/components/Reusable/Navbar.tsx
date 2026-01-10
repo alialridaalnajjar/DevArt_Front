@@ -1,6 +1,5 @@
-import { Book, ChevronDown, Menu } from "lucide-react";
+import { Book, ChevronDown, LockKeyhole, Menu } from "lucide-react";
 import { useState } from "react";
-import { LockKeyhole } from "lucide-react";
 import { Link } from "react-router-dom";
 import useAuthCookies from "../../utils/UseAuth";
 import NavExpansion from "./NavExpansion";

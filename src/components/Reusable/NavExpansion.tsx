@@ -1,12 +1,12 @@
-import { Home, Book, Search, LogIn } from "lucide-react";
+import { Book, Home, LockKeyhole, LogIn, User ,BookOpenText } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuthCookies from "../../utils/UseAuth";
-import { User } from "lucide-react";
-import { useEffect, useState } from "react";
 export default function NavExpansion() {
   const { isAuthenticated, getDecodedToken, removeToken } = useAuthCookies();
   const [image, setImage] = useState<string | null>(null);
-
+  const role = getDecodedToken()?.role;
+  const id = getDecodedToken()?.userId;
   useEffect(() => {
     const fetchProfileImage = async () => {
       const token = getDecodedToken();
@@ -31,8 +31,8 @@ export default function NavExpansion() {
   const token = getDecodedToken();
   const navData: { icon: React.ElementType; title: string; link: string }[] = [
     { icon: Home, title: "Home", link: "/" },
-    { icon: Book, title: "Courses", link: "/Courses/All" },
-    { icon: Search, title: "Search", link: "/Search" },
+    { icon: BookOpenText , title: "Courses", link: "/Courses/All" },
+    { icon: Book, title: "Quiz", link: "/Quiz" },
   ];
   const handleLogout = () => {
     removeToken();
@@ -54,6 +54,19 @@ export default function NavExpansion() {
             </Link>
           );
         })}
+
+        {role?.toLowerCase() === "admin" && isAuthenticated ? (
+          <Link
+            to={`/admin/${id}`}
+            className="flex items-center gap-4 rounded-lg px-4 py-3 text-gray-300 transition-all hover:bg-slate-800/50 hover:text-amber-500 active:scale-95"
+          >
+              <LockKeyhole className="h-5 w-5" />
+
+            <span className="text-sm font-medium">
+              Admin Panel
+            </span>
+          </Link>
+        ) : null}
         {isAuthenticated ? (
           <>
             <Link
