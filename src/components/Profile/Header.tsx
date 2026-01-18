@@ -1,19 +1,20 @@
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import {
-  Edit,
-  MapPin,
-  Calendar,
-  Mail,
-  User,
   Award,
+  Calendar,
+  Edit,
+  Mail,
+  MapPin,
+  Pen,
   Upload,
+  User,
   X,
 } from "lucide-react";
-import { useState } from "react";
-import type { ProfileData } from "../../utils/Types";
-import { storage } from "../../configs/firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import useAuthCookies from "../../utils/UseAuth";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { storage } from "../../configs/firebase";
+import type { ProfileData } from "../../utils/Types";
+import useAuthCookies from "../../utils/UseAuth";
 
 export default function ProfileHeader({
   first_name,
@@ -26,18 +27,26 @@ export default function ProfileHeader({
   created_at,
   profile_photo_url,
   setEdit,
-}: ProfileData & { setEdit: React.Dispatch<React.SetStateAction<boolean>> }) {
-  const { getDecodedToken } = useAuthCookies();
-  const decodedToken = getDecodedToken();
-  const role = decodedToken?.role.toLocaleUpperCase() || "USER";
+  setIsEditingSkills,
+}: ProfileData & {
+  setEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsEditingSkills: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  // soor el state el 3zeem
+  const [skills, setSkills] = useState<string[]>([]);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [newPhotoUrl, setNewPhotoUrl] = useState<string>(
-    profile_photo_url || ""
+    profile_photo_url || "",
   );
+
+  const { getDecodedToken } = useAuthCookies();
+  const decodedToken = getDecodedToken();
+  const role = decodedToken?.role.toLocaleUpperCase() || "USER";
   const { getToken } = useAuthCookies();
   const { userId } = useParams();
+
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -87,7 +96,7 @@ export default function ProfileHeader({
               created_at: created_at,
               profile_photo_url: downloadURL,
             }),
-          }
+          },
         );
 
         if (response.ok) {
@@ -112,6 +121,24 @@ export default function ProfileHeader({
     setImageFile(null);
     setImagePreview(null);
   };
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/profile/skills/${userId}`,
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setSkills(data.skills || []);
+        }
+      } catch (error) {
+        console.error("Error fetching skills:", error);
+      }
+    };
+
+    fetchSkills();
+  }, [userId]);
 
   return (
     <div className="bg-gray-950  backdrop-blur-sm rounded-2xl border border-slate-700/50 overflow-hidden shadow-2xl">
@@ -240,16 +267,16 @@ export default function ProfileHeader({
 
         {/* Skills Tags */}
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-sm font-semibold text-gray-400">Skills:</span>
-          {[
-            "React",
-            "Next.js",
-            "TypeScript",
-            "Node.js",
-            "Tailwind CSS",
-            "Python",
-            "PostgreSQL",
-          ].map((skill) => (
+          <span className="text-sm font-semibold text-gray-400 flex flex-row items-center justify-center gap-1">
+            Skills
+            <Pen
+              onClick={() => setIsEditingSkills(true)}
+              size={17}
+              className="text-amber-500/50 hover:text-amber-500 hover:cursor-pointer"
+            />{" "}
+            :
+          </span>
+          {skills.map((skill) => (
             <span
               key={skill}
               className="bg-amber-600/10 text-amber-400 border border-amber-600/30 hover:bg-amber-600/20 px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-default"
@@ -257,6 +284,11 @@ export default function ProfileHeader({
               {skill}
             </span>
           ))}
+          {!skills.length && (
+            <span className="text-gray-500 italic text-sm">
+              No skills added yet.
+            </span>
+          )}
         </div>
       </div>
     </div>

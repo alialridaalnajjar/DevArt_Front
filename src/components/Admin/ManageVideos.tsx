@@ -62,7 +62,7 @@ export default function ManageVideos() {
 
   const genres = [
     "All",
-    "React.js",
+    "FrontEnd",
     "TypeScript",
     "Design",
     "Database",

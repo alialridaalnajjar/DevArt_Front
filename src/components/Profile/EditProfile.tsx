@@ -184,7 +184,6 @@ export default function EditProfile({
               />
             </div>
           </div>
-
           <div className="flex items-center justify-end gap-3 mt-4 pt-6 border-t border-slate-800">
             <button
               onClick={() => setEdit(false)}

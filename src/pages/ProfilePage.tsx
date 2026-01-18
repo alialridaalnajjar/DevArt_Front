@@ -8,12 +8,14 @@ import ProfileCourses from "../components/Profile/ProfileCourses";
 import Navbar from "../components/Reusable/Navbar";
 import Loading from "../utils/Loading";
 import { type ProfileData } from "../utils/Types";
+import EditSkills from "../components/Profile/EditSkills";
 
 export default function ProfilePage() {
   // states
   const { userId } = useParams();
   const [loading, setLoading] = useState(true);
   const [edit, setEdit] = useState(false);
+  const [isEditingSkills, setIsEditingSkills] = useState(false);
   const [profileData, setProfileData] = useState<ProfileData>(
     {} as ProfileData
   );
@@ -45,6 +47,7 @@ export default function ProfilePage() {
       <div className="sticky bg-gray-950  top-0 z-50">
         <Navbar />
       </div>
+      {isEditingSkills && <EditSkills setIsEditingSkills={setIsEditingSkills} />}
       {edit && (
         <EditProfile
           setEdit={setEdit}
@@ -57,7 +60,7 @@ export default function ProfilePage() {
       ) : (
         <div className="min-h-screen bg-gray-950 py-8">
           <main className="container mx-auto px-4 py-8 lg:py-12">
-            <ProfileHeader {...profileData} setEdit={setEdit} />
+            <ProfileHeader {...profileData} setEdit={setEdit} setIsEditingSkills={setIsEditingSkills} />
             <div className="mt-8 grid gap-8 lg:grid-cols-3">
               <div className="lg:col-span-2 space-y-8">
                 <ProfileCourses />
