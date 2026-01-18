@@ -25,7 +25,6 @@ export default function ProfileCourses() {
           };
         });
         setRecommendedCourses(videoThumbnail);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching next video data:", error);
       }
@@ -37,7 +36,10 @@ export default function ProfileCourses() {
     <div className="bg-gray-950  rounded-2xl border border-white/10 p-6">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-bold text-white">Learn More</h2>
-        <Link to="/Courses/All" className="border-orange-600 text-orange-400 hover:bg-orange-600/50 hover:rounded-2xl p-1 hover:text-white bg-transparent">
+        <Link
+          to="/Courses/All"
+          className="border-orange-600 text-orange-400 hover:bg-orange-600/50 hover:rounded-2xl p-1 hover:text-white bg-transparent"
+        >
           Browse More
         </Link>
       </div>
