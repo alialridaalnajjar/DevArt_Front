@@ -1,8 +1,8 @@
-export type Skill =  {
+export type Skill = {
   id: string;
   name: string;
   category: string;
-}
+};
 
 export const allSkills: Skill[] = [
   // Programming Languages
@@ -224,4 +224,10 @@ export const allSkills: Skill[] = [
     name: "Technical Writing",
     category: "Soft Skills",
   },
+];
+
+export const horizontalLineData: { text: string }[] = [
+  { text: "Expert-led courses" },
+  { text: "Real-world topics" },
+  { text: "Easy to follow" },
 ];

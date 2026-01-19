@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuthCookies from "../../utils/UseAuth";
-import { horizontalLineData } from "../data/DisplayData";
+import { horizontalLineData } from "../../utils/data";
 import Horizontal from "./cards/Horizontal";
 import { useState } from "react";
 export default function Login() {
@@ -49,7 +49,7 @@ export default function Login() {
             password: credentials.password,
             rememberMe: credentials.rememberMe,
           }),
-        }
+        },
       );
 
       if (!response.ok) {

@@ -10,7 +10,7 @@ export default function ManageVideos() {
     const fetchVideo = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/video/genre/All`
+          `${import.meta.env.VITE_API_URL}/api/video/genre/All`,
         );
         const data = await response.json();
         setVideos(data);
@@ -26,7 +26,7 @@ export default function ManageVideos() {
         const updatedVideos = data.map((video: Video) => {
           const thumbnailObj = videoThumbnail.find(
             (thumb: { id: number; thumbnail: string }) =>
-              thumb.id === video.video_id
+              thumb.id === video.video_id,
           );
           return {
             ...video,
@@ -103,8 +103,8 @@ export default function ManageVideos() {
         videos.map((v) =>
           v.video_id === editingVideo.video_id
             ? { ...(formData as Video), video_id: editingVideo.video_id }
-            : v
-        )
+            : v,
+        ),
       );
     } else {
       // Add new video
@@ -141,7 +141,7 @@ export default function ManageVideos() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ video_id: videoID }),
-      }
+      },
     );
     const data = await (await response).json();
     if (data) {
@@ -160,7 +160,7 @@ export default function ManageVideos() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      }
+      },
     );
 
     if (!response.ok) {
@@ -175,8 +175,8 @@ export default function ManageVideos() {
       videos.map((v) =>
         v.video_id === editingVideo?.video_id
           ? { ...(formData as Video), video_id: editingVideo.video_id }
-          : v
-      )
+          : v,
+      ),
     );
 
     closeModal();
@@ -207,7 +207,7 @@ export default function ManageVideos() {
                 <p className="text-slate-400 text-sm">Total Duration</p>
                 <p className="text-3xl font-bold text-white mt-1">
                   {Math.floor(
-                    videos.reduce((acc, v) => acc + v.duration_seconds, 0) / 60
+                    videos.reduce((acc, v) => acc + v.duration_seconds, 0) / 60,
                   )}
                   m
                 </p>

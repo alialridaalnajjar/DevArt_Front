@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { RoleType, type UserRole } from "../../utils/Types";
-import { horizontalLineData } from "../data/DisplayData";
+import { horizontalLineData } from "../../utils/data";
 import Horizontal from "./cards/Horizontal";
 import useAuthCookies from "../../utils/UseAuth";
 

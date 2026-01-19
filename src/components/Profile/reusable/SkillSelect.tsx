@@ -98,7 +98,7 @@ export default function SkillsSelector({ onSkillsChange }: SkillsSelectorProps) 
             {selectedSkills.map((skill) => (
               <div
                 key={skill.id}
-                className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-medium"
+                className="flex items-center gap-2 bg-linear-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-medium"
               >
                 <span>{skill.name}</span>
                 <button
@@ -186,7 +186,7 @@ export default function SkillsSelector({ onSkillsChange }: SkillsSelectorProps) 
             alert(`Ready to save ${selectedSkills.length} skills to database`)
           }}
           disabled={selectedSkills.length === 0}
-          className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white px-8 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-orange-500/25"
+          className="bg-linear-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white px-8 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-orange-500/25"
         >
           Save Skills to Database
         </button>
