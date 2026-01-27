@@ -64,7 +64,7 @@ export default function QuizInsights() {
         <h2 className="text-xl font-bold text-white">Quiz Insights</h2>
         <Link
           to="/quiz/my-attempts"
-          className="border-orange-600 text-orange-400 hover:bg-orange-600/50 hover:rounded-2xl p-1 hover:text-white bg-transparent"
+          className="border-orange-600 text-orange-400 hover:rounded-2xl p-1 hover:text-white bg-transparent"
         >
           View All
         </Link>

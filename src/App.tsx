@@ -48,7 +48,6 @@ function App() {
             />
             <Route path="/Courses/:genreName" element={<BrowseCoursePage />} />
             <Route path="/Quiz" element={<QuizGenresPage />} />
-            <Route path="/quiz" element={<QuizGenresPage />} />
             <Route path="/quiz/:genreId" element={<QuizTakingPage />} />
             <Route path="/quiz/results/:attemptId" element={<QuizResultsPage />} />
             <Route path="/quiz/my-attempts" element={<MyAttemptsPage />} />
