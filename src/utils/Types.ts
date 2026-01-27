@@ -46,7 +46,7 @@ export type Activity = {
 };
 
 export type Video = {
-  thumbnail: string ;
+  thumbnail: string;
   video_id: number;
   module: string;
   title: string;
@@ -57,6 +57,57 @@ export type Video = {
   genre: string;
   author?: string;
   language?: string;
+};
+
+export type QuizGenre = {
+  genre_id: number;
+  name: string;
+  description?: string;
+  total_questions: number;
+  pass_score: number;
+  created_at?: string;
+};
+
+export type QuizOption = {
+  option_id: number;
+  option_text: string;
+  is_correct?: boolean;
+};
+
+export type QuizQuestion = {
+  question_id: number;
+  question: string;
+  options: QuizOption[];
+};
+
+export type QuizAnswer = {
+  question_id: number;
+  option_id: number;
+};
+
+export type QuizAttempt = {
+  attempt_id: number;
+  user_id: number;
+  genre_id: number;
+  genre_name?: string;
+  score: number;
+  total_questions: number;
+  pass_score: number;
+  passed: boolean;
+  started_at: string;
+  completed_at?: string;
+  status: 'in_progress' | 'completed';
+};
+
+export type QuizAttemptDetail = QuizAttempt & {
+  answers: Array<{
+    answer_id?: number;
+    question_id: number;
+    question: string;
+    option_id: number;
+    option_text: string;
+    is_correct: boolean;
+  }>;
 };
 
 export type Documentation = {
