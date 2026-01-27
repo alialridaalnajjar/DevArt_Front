@@ -45,11 +45,24 @@ export function useQuizAttempt(userId: number, genreId: number | null) {
 
       const questionsData = await quizApi.getQuestions(genreId);
       
+      console.log('Questions received from API:', questionsData);
+      
       // Shuffle options for each question to randomize order
-      const shuffledQuestions = questionsData.map(question => ({
-        ...question,
-        options: [...question.options].sort(() => Math.random() - 0.5)
-      }));
+      const shuffledQuestions = questionsData.map(question => {
+        // Check if options exist and is an array
+        if (!question.options || !Array.isArray(question.options)) {
+          console.warn(`Question ${question.question_id} has no options:`, question);
+          return {
+            ...question,
+            options: []
+          };
+        }
+        
+        return {
+          ...question,
+          options: [...question.options].sort(() => Math.random() - 0.5)
+        };
+      });
       
       setQuestions(shuffledQuestions);
       setError(null);
