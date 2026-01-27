@@ -38,7 +38,7 @@ export default function ProfileCourses() {
         <h2 className="text-xl font-bold text-white">Learn More</h2>
         <Link
           to="/Courses/All"
-          className="border-orange-600 text-orange-400 hover:bg-orange-600/50 hover:rounded-2xl p-1 hover:text-white bg-transparent"
+          className="border-orange-600 text-orange-400 hover:rounded-2xl p-1 hover:text-white bg-transparent"
         >
           Browse More
         </Link>
@@ -84,11 +84,11 @@ export default function ProfileCourses() {
 
                 {/* Action Button */}
                 <div className="flex items-center gap-2">
-                  <button className="bg-orange-600  flex flex-row items-center justify-center rounded-3xl">
+                  <button className="bg-orange-600 hover:bg-amber-700/95  flex flex-row items-center justify-center rounded-3xl px-2">
                     <Play className="h-4 w-4 mr-1 text-white " />
                     <Link
                       to={`/Courses/FrontEnd/${course.video_id}`}
-                      className="flex items-center px-1 py-1 text-sm font-medium text-white  "
+                      className="flex items-center px-2.5 py-1 text-xs font-medium text-white  "
                     >
                       Continue Learning
                     </Link>
