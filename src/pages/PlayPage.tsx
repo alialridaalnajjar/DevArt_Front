@@ -140,11 +140,7 @@ export default function WatchPage() {
                   </span>
                 </div>
 
-                <div className="hover:cursor-pointer flex items-center gap-2 px-3 py-2 bg-orange-500/10 border border-orange-500/30 rounded-lg">
-                  <span className={`text-sm font-medium ${"text-orange-400"}`}>
-                    Mark as complete
-                  </span>
-                </div>
+               
               </div>
             </div>
 
