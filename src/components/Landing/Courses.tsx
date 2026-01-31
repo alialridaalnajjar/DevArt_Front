@@ -12,7 +12,7 @@ const categories = [
   {
     icon: Code2,
     title: "Front End",
-    courses: 3,
+    courses: 2,
     color: "from-pink-500 to-pink-600",
     path: "FrontEnd",
   },
@@ -49,7 +49,7 @@ const categories = [
   {
     icon: Smartphone,
     title: "All",
-    courses: 3,
+    courses: 2,
     color: "from-green-500 to-green-600",
     path: "All",
   },
