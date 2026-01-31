@@ -83,7 +83,7 @@ export default function QuizGenres() {
                     <span>{genre.total_questions} Questions</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-orange-400 font-medium">
-                    <span>Pass: {genre.pass_score}%</span>
+                    <span>Pass: {genre.pass_score*10}%</span>
                   </div>
                 </div>
 
