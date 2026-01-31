@@ -81,7 +81,7 @@ export default function QuizResults() {
           </div>
 
           <h1 className="text-3xl font-bold text-white mb-2">
-            {passed ? 'Congratulations! 🎉' : 'Keep Trying! 💪'}
+            {passed ? 'Congratulations! :D ' : 'Keep Trying! :('}
           </h1>
           <p className="text-slate-400 mb-6">
             {passed
