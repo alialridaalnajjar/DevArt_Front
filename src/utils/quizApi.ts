@@ -135,9 +135,9 @@ export const quizApi = {
     }
 
     const data = await response.json();
-    console.log('Raw attempt response:', data);
+    
     const attempt = data.data || data.attempt || data;
-    console.log('Parsed attempt:', attempt);
+
     return attempt;
   },
 };

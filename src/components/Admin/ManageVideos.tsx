@@ -168,8 +168,8 @@ export default function ManageVideos() {
       return;
     }
 
-    const data = await response.json();
-    console.log("Video updated successfully:", data);
+    await response.json();
+    
     // Update the local state
     setVideos(
       videos.map((v) =>

@@ -306,7 +306,7 @@ setIsEditingSkills(false);
           <button
             onClick={() => {
               addSkills();
-              console.log("Skills to save:", selectedSkills);
+             
             }}
             disabled={selectedSkills.length === 0}
             className="flex-1 sm:flex-none px-4 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm bg-linear-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold shadow-lg hover:shadow-orange-500/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none"
