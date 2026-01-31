@@ -147,12 +147,7 @@ export default function Login() {
                 />
                 Remember me
               </label>
-              <Link
-                to="/forgot-password"
-                className="text-amber-500 hover:text-amber-400 transition"
-              >
-                Forgot password?
-              </Link>
+           
             </div>
 
             <button
@@ -275,12 +270,7 @@ export default function Login() {
                   />
                   Remember me
                 </label>
-                <Link
-                  to="/forgot-password"
-                  className="text-amber-500 hover:text-amber-400 transition"
-                >
-                  Forgot password?
-                </Link>
+             
               </div>
 
               <button
